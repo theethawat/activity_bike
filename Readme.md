@@ -5,14 +5,14 @@ Using PHP 7.3.2, Developby using PHP Composer and Bootstrapped by Laravel Framew
 
 ### Developling
 
-    * Can using XAMPP
-    * Can using `php artisan serve`
-    * Other laravel project must using [Composer](https://getcomposer.org) Package manager to install
+-   Can using XAMPP
+-   Can using `php artisan serve`
+-   Other laravel project must using [Composer](https://getcomposer.org) Package manager to install
 
 ### Deploy
 
-    * Deployment in Production Mode (Now this project is in Production)
-    * After setting in file .env please run `php artisan config:cache` and `php artisan route:cache` to restart
+-   Deployment in Production Mode (Now this project is in Production)
+-   After setting in file .env please run `php artisan config:cache` and `php artisan route:cache` to restart
 
 # Laravel Readme
 
