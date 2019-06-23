@@ -16,10 +16,23 @@
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/home/register', 'BikeController@register');
-Route::post('/home/confirmreg','BikeController@confirmRegister');
-Route::get('/home/view','BikeController@viewResult');
-Route::get('home/view/specific/{money}','BikeController@viewSpecific');
-Route::get('home/edit/{id}','BikeController@editRecord');
-Route::post('/home/editreg','BikeController@editRegisterActive');
-Route::get('home/delete/{id}','BikeController@deleteRecord');
+
+/**
+ * Using  Register Controller
+ * in file App/Http/Controllers
+ */
+Route::get('/home/register', 'RegisterController@register');
+Route::post('/home/confirmreg','RegisterController@confirmRegister');
+/**
+ * Using  ViewController Controller
+ * in file App/Http/Controllers
+ */
+Route::get('/home/view','ViewController@viewResult');
+Route::get('home/view/specific/{money}','ViewController@viewSpecific');
+/**
+ * Using  Edit Controller
+ * in file App/Http/Controllers
+ */
+Route::get('home/edit/{id}','EditController@editRecord');
+Route::post('/home/editreg','EditController@editRegisterActive');
+Route::get('home/delete/{id}','EditController@deleteRecord');
