@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\EditController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
@@ -15,6 +17,12 @@ class BibController extends Controller {
      * running with Database Primary Key
      * -----------------------------
      * */
+
+     public static function main(){
+         //do nothing
+     }
+
+     
     public function generateBib($donate){
         if($donate == "1000000"){
             DB::table('bike_million')->insert([

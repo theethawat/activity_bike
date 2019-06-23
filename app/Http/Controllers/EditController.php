@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 
-class EditController extends Controller {
+class EditController extends BibController {
     /**
      * -------------------------------
      * Edit Controller

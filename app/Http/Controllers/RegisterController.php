@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 
 
-class RegisterController extends Controller {
+class RegisterController extends BibController {
     /**
      * ---------------
      * Register Controller 
