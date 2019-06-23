@@ -65,11 +65,11 @@
                         }
                          if ($datalist -> regis_donation == "5000") {
                             $countThousand++;
-                            printf("SC%04d",$countThousand);
+                            printf("VC%04d",$countThousand);
                         }
                          if ($datalist -> regis_donation == "500") {
                             $countHundred++;
-                            printf("SC%04d",$countHundred);
+                            printf("GC%04d",$countHundred);
                         }
                         @endphp
                         </td>

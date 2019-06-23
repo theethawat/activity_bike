@@ -21,3 +21,5 @@ Route::post('/home/confirmreg','BikeController@confirmRegister');
 Route::get('/home/view','BikeController@viewResult');
 Route::get('home/view/specific/{money}','BikeController@viewSpecific');
 Route::get('home/edit/{id}','BikeController@editRecord');
+Route::post('/home/editreg','BikeController@editRegisterActive');
+Route::get('home/delete/{id}','BikeController@deleteRecord');
