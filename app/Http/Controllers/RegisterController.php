@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 
 
-class BikeController extends Controller {
+class RegisterController extends Controller {
     /**
      * ---------------
      * Register Controller 
