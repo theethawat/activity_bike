@@ -49,7 +49,7 @@
     <input type="text" name="regis_email"  class="form-control">
     <hr>
     <label>ที่อยู่</label>
-    <textarea  name="regis_address"  class="form-control" rows="3"></textarea>
+    <textarea  name="regis_address"  class="form-control" rows="3" required></textarea>
      <label>จังหวัด</label>
     <select name="regis_province" class="form-control">
       <option value="" selected>--------- เลือกจังหวัด ---------</option>

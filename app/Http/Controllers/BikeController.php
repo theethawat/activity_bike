@@ -76,22 +76,22 @@ class BikeController extends Controller {
             DB::table('bike_million')->insert([
                 'status_use' => true
             ]);
-            $bibId = DB::table('bike_million')->where('status_use',true)->orderBy('id','DESC')->first();
-            return $bibId;
+            $bibId = DB::table('bike_million')->where('status_use',true)->orderBy('id','DESC')->select('id')->first();
+            return $bibId->id;
         }
         if($donate == "5000"){
             DB::table('bike_thousand')->insert([
                 'status_use' => true
             ]);
-            $bibId = DB::table('bike_thousand')->where('status_use',true)->orderBy('id','DESC')->first();
-            return $bibId;
+            $bibId = DB::table('bike_thousand')->where('status_use',true)->orderBy('id','DESC')->select('id')->first();
+            return $bibId->id;
         }
         if($donate == "500"){
             DB::table('bike_hundred')->insert([
                 'status_use' => true
             ]);
-            $bibId = DB::table('bike_hundred')->where('status_use',true)->orderBy('id','DESC')->first();
-            return $bibId;
+            $bibId = DB::table('bike_hundred')->where('status_use',true)->orderBy('id','DESC')->select('id')->first();
+            return $bibId->id;
         }
     }
 
