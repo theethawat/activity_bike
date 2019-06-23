@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
-    
+
 
 @auth
-    
+
 
 <div class="container">
 <div class="card">
@@ -19,10 +19,21 @@
         <option value="ด.ช.">ด.ช.</option>
         <option value="ด.ญ.">ด.ญ.</option>
     </select>
-    <label>ชื่อ</label>
-    <input type="text" name="regis_name" required class="form-control">
-    <label>นามสกุล</label>
-    <input type="text" name="regis_surname" required class="form-control">
+
+
+    <div class="row">
+        <div class="col-sm-6">
+            <label>ชื่อ</label>
+            <input type="text" name="regis_name" required class="form-control">
+        </div>
+
+        <div class="col-sm-6">
+            <label>นามสกุล</label>
+            <input type="text" name="regis_surname" required class="form-control">
+        </div>
+
+    </div>
+
     <label>เพศ</label>
     <select class="form-control col-sm-3" name="regis_sex">
         <option value="ชาย">ชาย</option>
@@ -390,7 +401,7 @@
                 <input type="checkbox" class="form-check-input" name="sou_medal" value="YES" checked>เหรียญที่ระลึก <br>
             </ul>
             <label>ขนาดเสื้อ</label>
-            <select class="form-control" name="regis_size" required>
+            <select class="form-control col-sm-3" name="regis_size" required>
                 <option value="SS">SS (รอบอก 36 นิ้ว)</option>
                 <option value="S">S (รอบอก 38 นิ้ว)</option>
                 <option value="M">M (รอบอก 40 นิ้ว)</option>
@@ -398,6 +409,12 @@
                 <option value="XL">XL (รอบอก 44 นิ้ว)</option>
                 <option value="2XL">2XL (รอบอก 46 นิ้ว)</option>
                 <option value="3XL">3XL (รอบอก 48 นิ้ว) </option>
+            </select>
+
+            <label>สถานะการชำระเงิน</label>
+            <select class="form-control col-sm-3" name="regis_status" required>
+                    <option value="pending">รอการชำระเงิน</option>
+                    <option value="success">ชำระเงินแล้ว</option>
             </select>
             <hr>
             <input type="hidden" name="_token" value="{{ csrf_token() }}">

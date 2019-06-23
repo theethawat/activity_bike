@@ -11,6 +11,18 @@
 <br>
 <form action="{{url('/home/editreg')}}" method="POST">
 <h3>แก้ไขการลงทะเบียน ไอดีที่ {{$data->id}} | {{$data->regis_name}}  {{ $data->regis_surname}}</h3>
+
+    <label>สถานะการชำระเงิน</label>
+    <?php
+            $status = $data->regis_status;
+            $status == "success" ? $success = "selected" : $success="";
+            $status == "pending" ? $pending = "selected" : $pending="";
+        ?>
+        <select class="form-control col-sm-3" name="regis_status" required>
+            <option value="pending" {{$pending}}>รอการชำระเงิน</option>
+            <option value="success" {{$success}} >ชำระเงินแล้ว</option>
+        </select>
+
     <label>คำนำหน้าชื่อ</label>
     <!--For Displaying the default value from database-->
     <select class="form-control col-sm-3" name="regis_prefix">
@@ -370,6 +382,7 @@
             <hr>
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <input type="hidden" name="regis_id" value="{{$data->id}}">
+            <input type="hidden" name="bib_status" value="{{$data->bib_id}}">
             <p>โปรดตรวจสอบข้อมูลให้แน่นอนก่อนการยืนยัน</p>
             <button type="submit" class="btn btn-primary "> ยืนยันการแก้ไขข้อมูล </button>
 </form>

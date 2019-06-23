@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
 
 
 class BikeController extends Controller {
@@ -31,11 +32,21 @@ class BikeController extends Controller {
         $sou_shield = $request->input('sou_shield');
         $sou_medal = $request->input('sou_medal');
         $regis_size = $request->input('regis_size');
+        $regis_status = $request->input('regis_status');
+
+        if($regis_status == "success"){
+            $bibId = BikeController::generateBib($regis_donation);
+        }
+        else{
+            $bibId = NULL;
+        }
 
         DB::table('bike_register')->insert(
             [
             'regis_prefix' => $regis_prefix,
             'regis_name' => $regis_name,
+            'bib_id' => $bibId,
+            'regis_status' => $regis_status,
             'regis_surname' => $regis_surname,
             'regis_date' => $regis_date,
             'regis_peopleid' => $regis_peopleid,
@@ -55,7 +66,33 @@ class BikeController extends Controller {
             'regis_size' => $regis_size
             ]
         );
+
+
         return Redirect::to('/home');
+    }
+
+    public function generateBib($donate){
+        if($donate == "1000000"){
+            DB::table('bike_million')->insert([
+                'status_use' => true
+            ]);
+            $bibId = DB::table('bike_million')->where('status_use',true)->orderBy('id','DESC')->first();
+            return $bibId;
+        }
+        if($donate == "5000"){
+            DB::table('bike_thousand')->insert([
+                'status_use' => true
+            ]);
+            $bibId = DB::table('bike_thousand')->where('status_use',true)->orderBy('id','DESC')->first();
+            return $bibId;
+        }
+        if($donate == "500"){
+            DB::table('bike_hundred')->insert([
+                'status_use' => true
+            ]);
+            $bibId = DB::table('bike_hundred')->where('status_use',true)->orderBy('id','DESC')->first();
+            return $bibId;
+        }
     }
 
     public function viewResult(){
@@ -111,33 +148,79 @@ class BikeController extends Controller {
         $sou_shield = $request->input('sou_shield');
         $sou_medal = $request->input('sou_medal');
         $regis_size = $request->input('regis_size');
+        $regis_status = $request->input('regis_status');
+        $bib_status = $request->input('bib_status');
 
-        DB::table('bike_register')->where('id',$regis_id)->
-        update(
-            [
-            'regis_prefix' => $regis_prefix,
-            'regis_name' => $regis_name,
-            'regis_surname' => $regis_surname,
-            'regis_date' => $regis_date,
-            'regis_peopleid' => $regis_peopleid,
-            'regis_call' => $regis_call,
-            'regis_sex' => $regis_sex,
-            'regis_email' => $regis_email,
-            'regis_address' => $regis_address,
-            'regis_province' => $regis_province,
-            'regis_nationality' => $regis_nationality,
-            'regis_country' => $regis_country,
-            'regis_team' => $regis_team,
-            'regis_contact' => $regis_contact,
-            'regis_contactcall' => $regis_contactcall,
-            'regis_donation' => $regis_donation,
-            'regis_shield' => $sou_shield,
-            'regis_medal' => 'YES',
-            'regis_size' => $regis_size
-            ]
+        //If success payment but not bib generating (Success Payment at this edit)
+        if($regis_status == "success" && $bib_status =="" ){
+            $bibId = BikeController::generateBib($regis_donation);
+            DB::table('bike_register')->where('id',$regis_id)->
+            update(
+                [
+                'bib_id' => $bibId,
+                'regis_status' => $regis_status,
+                'regis_prefix' => $regis_prefix,
+                'regis_name' => $regis_name,
+                'regis_surname' => $regis_surname,
+                'regis_date' => $regis_date,
+                'regis_peopleid' => $regis_peopleid,
+                'regis_call' => $regis_call,
+                'regis_sex' => $regis_sex,
+                'regis_email' => $regis_email,
+                'regis_address' => $regis_address,
+                'regis_province' => $regis_province,
+                'regis_nationality' => $regis_nationality,
+                'regis_country' => $regis_country,
+                'regis_team' => $regis_team,
+                'regis_contact' => $regis_contact,
+                'regis_contactcall' => $regis_contactcall,
+                'regis_donation' => $regis_donation,
+                'regis_shield' => $sou_shield,
+                'regis_medal' => 'YES',
+                'regis_size' => $regis_size
+                ]
         );
-        return Redirect::to('/home');
+        }
+        //If Bib is now successful generated or nothing change about bib Using This Query
+        else{
+            DB::table('bike_register')->where('id',$regis_id)->
+            update(
+                [
+                'regis_status' => $regis_status,
+                'regis_prefix' => $regis_prefix,
+                'regis_name' => $regis_name,
+                'regis_surname' => $regis_surname,
+                'regis_date' => $regis_date,
+                'regis_peopleid' => $regis_peopleid,
+                'regis_call' => $regis_call,
+                'regis_sex' => $regis_sex,
+                'regis_email' => $regis_email,
+                'regis_address' => $regis_address,
+                'regis_province' => $regis_province,
+                'regis_nationality' => $regis_nationality,
+                'regis_country' => $regis_country,
+                'regis_team' => $regis_team,
+                'regis_contact' => $regis_contact,
+                'regis_contactcall' => $regis_contactcall,
+                'regis_donation' => $regis_donation,
+                'regis_shield' => $sou_shield,
+                'regis_medal' => 'YES',
+                'regis_size' => $regis_size
+                ]
+        );
+        }
+        return Redirect::to('/home/view');
     }
 
-    public function deleteRecord()
+    public function deleteRecord($id){
+        if (Auth::check()) {
+            DB::table('bike_register')->where('id',$id)->delete();
+            echo "<script>alert('Successfull Deleting การลบข้อมูลสำเร็จ');</script>";
+            return Redirect::to('/home/view');
+        }
+        else{
+            echo "<script>alert('ไม่สามารถที่จะลบได้ เนื่องจากคุณไม่มีสิทธิในการลบ กรุณาเข้าสู่ระบบ');</script>";
+            return Redirect::to('/home/view');
+        }
+    }
 }
