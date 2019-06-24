@@ -6,58 +6,84 @@
 
 
 <div class="container">
-<div class="card">
+<div class="card col-md-10">
 <div class="card-body">
-<br>
+
 <form action="{{url('/home/confirmreg')}}" method="POST">
-    <h3>ลงทะเบียนเข้าร่วมการปั่นจักรยาน</h3>
-    <h5>ข้อมูลส่วนตัว</h5>
-    <label>คำนำหน้าชื่อ*</label>
-    <select class="form-control col-sm-3" name="regis_prefix" required>
-        <option value="นาย">นาย</option>
-        <option value="นาง">นาง</option>
-        <option value="น.ส.">น.ส.</option>
-        <option value="ด.ช.">ด.ช.</option>
-        <option value="ด.ญ.">ด.ญ.</option>
-    </select>
+    <h3 >ลงทะเบียนเข้าร่วมกิจกรรม 10.28 กรกฎาคม BIKE @ เขื่อนวชิราลงกรณ </h3> <hr>
+    <!--
+        ----------------------------------------------
+        /*------SESSION 1 ข้อมูลส่วนตัว ------------------------*/
+        ----------------------------------------------
+    -->
+    
+        <h4>ข้อมูลส่วนตัว</h4>
+    
+            <label>คำนำหน้าชื่อ*</label>
+            <select class="form-control col-sm-3" name="regis_prefix" required>
+                <option value="นาย">นาย</option>
+                <option value="นาง">นาง</option>
+                <option value="น.ส.">น.ส.</option>
+                <option value="ด.ช.">ด.ช.</option>
+                <option value="ด.ญ.">ด.ญ.</option>
+            </select>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label>ชื่อ*</label>
+                    <input type="text" name="regis_name" required class="form-control">
+                </div>
 
-
-    <div class="row">
-        <div class="col-sm-6">
-            <label>ชื่อ*</label>
-            <input type="text" name="regis_name" required class="form-control">
-        </div>
-
-        <div class="col-sm-6">
-            <label>นามสกุล*</label>
-            <input type="text" name="regis_surname" required class="form-control">
-        </div>
-
-    </div>
-
-    <label>เพศ*</label>
-    <select class="form-control col-sm-3" name="regis_sex" required>
-        <option value="ชาย">ชาย</option>
-        <option value="หญิง">หญิง</option>
-    </select>
-    <label>วัน เดือน ปีเกิด*</label>
-    <input type="date" name="regis_date" required class="form-control col-sm-3">
-    <label>หมายเลขบัตรประชาชน หรือ หมายเลขพาสปอร์ต*</label>
-    <input type="text" name="regis_peopleid" required class="form-control">
-     <label>หมายเลขโทรศัพท์*</label>
-    <input type="text" name="regis_call" required class="form-control">
-     <label>อีเมล</label>
-    <input type="text" name="regis_email"  class="form-control">
+                <div class="col-sm-6">
+                    <label>นามสกุล*</label>
+                    <input type="text" name="regis_surname" required class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-4">
+                    <label>เพศ*</label>
+                    <select class="form-control " name="regis_sex" required>
+                        <option value="ชาย">ชาย</option>
+                        <option value="หญิง">หญิง</option>
+                    </select>
+                </div>
+                <div class="col-sm-4">
+                    <label>วันเกิด(เดือน/วัน/ปี)*</label>
+                    <input type="date" name="regis_date" required class="form-control ">
+                </div>
+                <div class="col-sm-4">
+                    <label>หมายเลขโทรศัพท์*  </label>
+                    <input type="text" name="regis_call" required class="form-control ">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label>หมายเลขบัตรประชาชน หรือ หมายเลขหนังสือเดินทาง*</label>
+                    <input type="text" name="regis_peopleid" required class="form-control ">
+                </div>
+                
+                <div class="col-sm-6">
+                    <label>อีเมล </label>
+                    <input type="email" name="regis_email"  class="form-control ">
+                </div>
+            </div>
     <hr>
-    <h5>ที่อยู่</h5>
+ <!--
+        ----------------------------------------------
+        /*------SESSION 2 ที่อยู่ ------------------------*/
+        ----------------------------------------------
+    -->
+    <h4>ที่อยู่</h4>
     <label>ที่อยู่*</label>
     <textarea  name="regis_address"  class="form-control" rows="3" required></textarea>
      <label>จังหวัด*</label>
+
     <select name="regis_province" class="form-control">
-      <option value="" selected>--------- เลือกจังหวัด ---------</option>
+      <option value="" >--------- เลือกจังหวัด ---------</option>
       <option value="กรุงเทพมหานคร">กรุงเทพมหานคร</option>
       <option value="กระบี่">กระบี่ </option>
-      <option value="กาญจนบุรี">กาญจนบุรี </option>
+      <option value="กาญจนบุรี" selected >กาญจนบุรี </option>
       <option value="กาฬสินธุ์">กาฬสินธุ์ </option>
       <option value="กำแพงเพชร">กำแพงเพชร </option>
       <option value="ขอนแก่น">ขอนแก่น</option>
@@ -135,19 +161,20 @@
 </select>
      <label>สัญชาติ*</label>
     <input type="text" name="regis_nationality" required class="form-control">
+
     <label>ประเทศ*</label>
-       <select  name="regis_country" class="form-control">
-                <option value="Afghanistan">Afghanistan</option>
-                <option value="Åland Islands">Åland Islands</option>
-                <option value="Albania">Albania</option>
-                <option value="Algeria">Algeria</option>
-                <option value="American Samoa">American Samoa</option>
-                <option value="Andorra">Andorra</option>
-                <option value="Angola">Angola</option>
-                <option value="Anguilla">Anguilla</option>
-                <option value="Antarctica">Antarctica</option>
-                <option value="Antigua and Barbuda">Antigua and Barbuda</option>
-                <option value="Argentina">Argentina</option>
+    <select  name="regis_country" class="form-control">
+        <option value="Afghanistan">Afghanistan</option>
+        <option value="Åland Islands">Åland Islands</option>
+            <option value="Albania">Albania</option>
+            <option value="Algeria">Algeria</option>
+            <option value="American Samoa">American Samoa</option>
+            <option value="Andorra">Andorra</option>
+            <option value="Angola">Angola</option>
+            <option value="Anguilla">Anguilla</option>
+            <option value="Antarctica">Antarctica</option>
+             <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+             <option value="Argentina">Argentina</option>
                 <option value="Armenia">Armenia</option>
                 <option value="Aruba">Aruba</option>
                 <option value="Australia">Australia</option>
@@ -381,59 +408,65 @@
                 <option value="Yemen">Yemen</option>
                 <option value="Zambia">Zambia</option>
                 <option value="Zimbabwe">Zimbabwe</option>
-            </select>
+    </select>
+ <!--
+        ----------------------------------------------
+        /*------SESSION 3 ทีม และ ข้อมูลติดต่อ ------------------------*/
+        ----------------------------------------------
+    -->
+        <hr>
+        <h4>ทีมที่ลงแข่งขัน </h4>
+        <label>ชื่อทีม (Optional)</label>
+        <input type="text" class="form-control" name="regis_team">
+        <label>ชื่อผู้ติดต่อเร่งด่วน (Optional)</label>
+        <input type="text" class="form-control" name="regis_contact">
+        <label>หมายเลขโทรศัพท์ของผู้ติดต่อเร่งด่วน (Optional)</label>
+        <input type="text" class="form-control" name="regis_contactcall">
+        <hr>
 
-            <hr>
-            <h5>ทีมที่ลงแข่งขัน </h5>
-            <label>ชื่อทีม (Optional)</label>
-            <input type="text" class="form-control" name="regis_team">
-            <label>ชื่อผู้ติดต่อเร่งด่วน (Optional)</label>
-            <input type="text" class="form-control" name="regis_contact">
-            <label>หมายเลขโทรศัพท์ของผู้ติดต่อเร่งด่วน (Optional)</label>
-            <input type="text" class="form-control" name="regis_contactcall">
-            <hr>
-            <h5>การบริจาคเงิน </h5>
-            <label>ร่วมบริจาค*</label>
-          
 
-            <ul>
-                <input class="form-check-input" type="radio" name="regis_donation" value="1000000" id="premium_donate" required>1,000,0000 บาท <br>
-                <input class="form-check-input" type="radio" name="regis_donation" value="5000" id="premium_donate">5,0000 บาท <br>
-               <input class="form-check-input" type="radio" name="regis_donation" value="500">500 บาท
-            </ul>
-            <!-- <script>
-                function myFunction() {
-                var checkBox = document.getElementById("premium_donate");
-                var text = document.getElementById("optional_donation");
-                if (checkBox.checked == true){
-                    text.style.display = "block";
-                } 
-                else {
-                    text.style.display = "none";
-                }
-            }
-            </script> -->
-            <div class="card bg-light">
-                <div class="card-body">
-                    <label>จำนวนเงินเป็นตัวเลขและตัวอักษร<strong> กรณีบริจาคมากกว่าที่กำหนด (ถ้ามีการใส่ โปรดใส่ทั้งคู่)</strong></label>
+
+         <!--
+        ----------------------------------------------
+        /*------SESSION 4 การบริจาคเงิน ------------------------*/
+        ----------------------------------------------
+    -->
+        <h4>การบริจาคเงิน </h4>
+        <label>ร่วมบริจาค*</label>
+        <select class="form-control" required name="regis_donation">
+            <option value="1000000">1,000,000 บาท</option>
+            <option value="1000000">5,000 บาท</option>
+            <option value="1000000">500 บาท</option>
+        </select>
+
+        <br>
+  
+        <div class="card bg-light">
+            <div class="card-body">
+            <h5>สำหรับผู้ที่บริจาคมากกว่า 5,000 บาท</h5>
+                <label>จำนวนเงินเป็นตัวเลขและตัวอักษร<strong> กรณีบริจาคมากกว่าที่กำหนด (ถ้ามีการใส่ โปรดใส่ทั้งคู่)</strong></label>
                     <div class="row" id="optional_donation" >
                         <div class="col-sm-6">
                             <label>จำนวนเงินเป็นตัวเลข</label>
-                            <input type="text" name="money_numberic"  class="form-control">
+                            <input type="number" min="5000" name="money_numberic"  class="form-control">
                         </div>
 
                         <div class="col-sm-6">
                             <label>จำนวนเงินเป็นตัวอักษร</label>
-                            <input type="text" name="money_alphabet" class="form-control">
+                            <input type="text" name="money_alphabet" class="form-control" placeholder="เช่น ห้าพันสองร้อยบาทถ้วน">
                         </div>
                     </div>
-                </div>
             </div>
+        </div>
             <br>
 
-           
+            <!--
+        ----------------------------------------------
+        /*------SESSION 5 ของที่ระลึก------------------------*/
+        ----------------------------------------------
+    -->
             
-            <h5>ของที่ระลึก </h5>
+            <h4>ของที่ระลึก </h4>
             <label>ของที่ระลึก</label><br>
             <ul>
                 <input type="checkbox" class="form-check-input" name="sou_shield" value="YES">โล่ที่ระลึก <br>
@@ -450,11 +483,20 @@
                 <option value="3XL">3XL (รอบอก 48 นิ้ว) </option>
             </select>
             <hr>
-            <h5>สถานะ </h5>
+
+             <!--
+        ----------------------------------------------
+        /*------SESSION 6 สถานะการชำระเงิน  ------------------------*/
+        ----------------------------------------------
+    -->
+
+
+            <h4>สถานะ </h4>
             <label>สถานะการชำระเงิน*</label>
             <select class="form-control col-sm-3" name="regis_status" required>
-                    <option value="pending">รอการชำระเงิน</option>
-                    <option value="success">ชำระเงินแล้ว</option>
+                     <option value="success">ชำระเงินแล้ว</option>
+                     <option value="pending">รอการชำระเงิน</option>
+                   
             </select>
             
             <input type="hidden" name="_token" value="{{ csrf_token() }}"> <br>
