@@ -498,7 +498,17 @@
                      <option value="pending">รอการชำระเงิน</option>
                    
             </select>
+            <br>
+            <label>สถานะการรับเสื้อ ณ เวลาที่สมัคร *</label>
+            <select class="form-control col-sm-3" name="regis_cloth" required>
+                     <option value="1">รับเสื้อแล้ว</option>
+                     <option value="0" selected>ยังไม่รับเสื้อ</option>
+            </select>
             
+            <?php
+            $addingUser = Auth::user()->name;
+            ?>
+             <input type="hidden" name="input_username" value="{{$addingUser}}"> 
             <input type="hidden" name="_token" value="{{ csrf_token() }}"> <br>
             <button type="submit" class="btn btn-primary "> ยืนยันการสมัคร </button>
 </form>

@@ -64,8 +64,16 @@
                                     </a>
                             </div>
                     </div>
-
-                </div>
+                            <hr>
+                    <div class="row justify-content-around">
+                            <div class="col-sm-5">
+                                    <a href="{{url('/home/search/')}}">
+                                        <button class="btn btn-info kanit" style="margin:0.8em;height:50px;">
+                                            <h6><i class="fas fa-search"></i>  ค้นหาจากชื่อ หรือ เลขบัตรประชาชน</h6>
+                                        </button>
+                                    </a>
+                            </div> 
+                    </div>
             </div>
         </div>
     </div>

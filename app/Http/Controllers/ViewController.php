@@ -42,4 +42,30 @@ class ViewController extends Controller {
         $regisData = DB::table('bike_register')->where('id',$id)->first();
         return view('recipt')->with('data',$regisData);
     }
+
+    public function printDetail($id){
+        $regisData = DB::table('bike_register')->where('id',$id)->first();
+        return view('data')->with('data',$regisData);
+    }
+
+    public function searchPage(){
+        return view('search');
+    }
+
+    public function searchMethod(Request $request){
+        $search_method = $request->input('search_method');
+        $search_item = $request->input('search_item');
+
+        if($search_method == "name")
+        {
+            $result = DB::table('bike_register')->where('regis_name',$search_item)->orderBy('id','DESC')->get();
+        }
+        else if ($search_method == "idcard"){
+            $result = DB::table('bike_register')->where('regis_peopleid',$search_item)->orderBy('id','DESC')->get();
+        }
+
+        $describe ="Search Result";
+        return view('view')->with('data',$result)
+        ->with('describe',$describe);
+    }
 }

@@ -29,6 +29,7 @@ Route::post('/home/confirmreg','RegisterController@confirmRegister');
  */
 Route::get('/home/view','ViewController@viewResult');
 Route::get('home/view/specific/{money}','ViewController@viewSpecific');
+Route::get('home/detail/{id}','ViewController@printDetail');
 /**
  * Using  Edit Controller
  * in file App/Http/Controllers
@@ -40,3 +41,11 @@ Route::get('home/delete/{id}','EditController@deleteRecord');
  * Printing
  */
 Route::get('home/print/{id}','ViewController@printRecipt');
+
+/**
+ * 
+ *Searching
+ */
+
+Route::get('home/search/','ViewController@searchPage');
+Route::post('/home/search/active/','ViewController@searchMethod');

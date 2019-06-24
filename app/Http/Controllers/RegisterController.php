@@ -24,6 +24,7 @@ class RegisterController extends BibController {
     public function confirmRegister(Request $request){ 
 
         //Data Fetching from 'Form' Input
+        $input_username = $request->input('input_username');
         $regis_prefix = $request->input('regis_prefix');
         $regis_name = $request->input('regis_name');
         $regis_surname = $request->input('regis_surname');
@@ -45,7 +46,8 @@ class RegisterController extends BibController {
         $regis_size = $request->input('regis_size');
         $regis_status = $request->input('regis_status');
         $money_numberic = $request->input('money_numberic');
-        $money_alphabet = $request->input('money_alphabet');  
+        $money_alphabet = $request->input('money_alphabet'); 
+        $regis_cloth = $request->input('regis_cloth'); 
 
         //Generate BIB (ID for Biking) or not, Generate only success payment
         if($regis_status == "success"){
@@ -72,6 +74,7 @@ class RegisterController extends BibController {
         //Insert Into Database
         DB::table('bike_register')->insert(
             [
+            'input_user' => $input_username,
             'regis_prefix' => $regis_prefix,
             'regis_name' => $regis_name,
             'bib_id' => $bibId,
@@ -94,7 +97,8 @@ class RegisterController extends BibController {
             'regis_medal' => 'YES',
             'regis_size' => $regis_size,
             'donate_value' => $donation_numberic,
-            'donate_alphabet' => $donation_alphabet
+            'donate_alphabet' => $donation_alphabet,
+            'cloth_recieve'=>$regis_cloth
             ]
         );
         return Redirect::to('/home');

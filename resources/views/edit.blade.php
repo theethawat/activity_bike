@@ -17,12 +17,22 @@
             $status = $data->regis_status;
             $status == "success" ? $success = "selected" : $success="";
             $status == "pending" ? $pending = "selected" : $pending="";
-        ?>
+    ?>
         <select class="form-control col-sm-3" name="regis_status" required>
             <option value="pending" {{$pending}}>รอการชำระเงิน</option>
             <option value="success" {{$success}} >ชำระเงินแล้ว</option>
         </select>
+    <?php
+            $cloth = $data->cloth_recieve;
+            $cloth == true ? $recieved = "selected" : $recieved="";
+            $cloth == false ? $nonrecieved = "selected" : $nonrecieved="";
+    ?>    
 
+    <label>สถานะการรับเสื้อ  </label>
+        <select class="form-control col-sm-3" name="regis_cloth" required>
+                     <option value="1" {{$recieved}}>รับเสื้อแล้ว</option>
+                     <option value="0" {{$nonrecieved}}>ยังไม่รับเสื้อ</option>
+        </select>
     <label>คำนำหน้าชื่อ</label>
     <!--For Displaying the default value from database-->
     <select class="form-control col-sm-3" name="regis_prefix">
@@ -402,6 +412,10 @@
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <input type="hidden" name="regis_id" value="{{$data->id}}">
             <input type="hidden" name="bib_status" value="{{$data->bib_id}}">
+            <?php
+            $addingUser = Auth::user()->name;
+            ?>
+             <input type="hidden" name="input_username" value="{{$addingUser}}"> 
             <p>โปรดตรวจสอบข้อมูลให้แน่นอนก่อนการยืนยัน</p>
             <button type="submit" class="btn btn-primary "> ยืนยันการแก้ไขข้อมูล </button>
 </form>

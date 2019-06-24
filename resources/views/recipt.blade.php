@@ -6,8 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ใบเสร็จรับเงิน</title>
     <script src="https://kit.fontawesome.com/942c2b45e2.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Sarabun&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
+    body{
+        font-family:'Sarabun',sans-serif;
+    }
     .acenter{
         text-align:center;
     }
@@ -23,9 +27,10 @@
 </head>
 <body>
     <div class="container">
-        <div class="card">
+        <div class="card border-dark">
             <div class="card-body">
             <h4 class="acenter">ใบเสร็จรับเงิน</h4>
+            <h6 class="acenter">การไฟฟ้าฝ่ายผลิตแห่งประเทศไทย เขื่อนวชิราลงกรณ 444 ม.1 ต.ท่าขนุน อ.ทองผาภูมิ จ.กาญจนบุรี</h6>
             <h6 class="aright">เลขที่ 
             <?php
                 if($data->bib_id != NULL){
@@ -45,9 +50,11 @@
             ?>
             
             </h6>
-            <hr>
-            <h6>รายละเอียดลูกค้า</h6>
+            <hr class="border-dark">
+            <h6><strong>ชื่อกิจกรรม</strong> 10.28 กรกฎาคม BIKE @ เขื่อนวชิราลงกรณ</h6>
+            <h6><strong>รายละเอียดผู้บริจาค</strong></h6>
             <h6><b>ชื่อ</b> {{ $data -> regis_prefix}}{{ $data -> regis_name}}  {{ $data -> regis_surname}} </h6>
+            <h6><b>ที่อยู่</b> {{ $data -> regis_address}}</h6>
             <h6> <b>วันที่รับเงิน</b> 
             <?php
                 $date = date("d/m/");
@@ -76,11 +83,18 @@
                 ?>  </u> บาท </h6>
                 <h6>( {{$data->donate_alphabet}} ) &nbsp&nbsp&nbsp</h6>
             </div>
+            <div>
+                <h6>ผู้รับเงิน ___________________________________</h6>
+                <h6>แผนกบัญชีและการเงิน เขื่อนวชิราลงกรณ<br>
+                โทร 034-599-882 ต่อ 2210 - 2216</h6>
+            </div>
             </div>
         </div>
     </div>
     <script>
-    window.print()
+    setTimeout(() => {
+        window.print()
+    }, 2000);
     </script>
 </body>
 </html>

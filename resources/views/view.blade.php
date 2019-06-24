@@ -43,7 +43,8 @@
                         <th scope="col">รับเหรียญ</th>
                         <th scope="col">เงินบริจาค</th>
                         <th scope="col">แก้ไข หรือ ลบ</th>
-                        <th scope="col">อัพเดทข้อมูลเมื่อ</th>
+                        <th scope="col">แก้ไขล่าสุดโดย</th>
+                        <th scope="col">อัพเดทเมื่อ</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -78,8 +79,14 @@
                             $status = $datalist->regis_status;
                             if($status == "pending")
                                 print("<span class='badge badge-danger'><h6>รอการชำระ</h6></span>");
-                            if($status == "success")
-                                print("<span class='badge badge-success'><h6>ชำระเงินเรียบร้อย</h6></span>");
+                            if($status == "success"){
+                                print("<span class='badge badge-success'><h6>ชำระเงินเรียบร้อย</h6></span><br>");
+                                if($datalist->cloth_recieve == true)
+                                    print("<span class='badge badge-warning'><h6>รับเสื้อแล้ว</h6></span>");
+                                if($datalist->cloth_recieve == false)
+                                    print("<span class='badge badge-light'><h6>ยังไม่รับเสื้อ</h6></span>");
+                            }
+                                
                         ?> </td>
                         <td scope="col">{{ $datalist -> regis_prefix}}</td>
                         <td scope="col">{{ $datalist -> regis_name}}</td>
@@ -112,8 +119,10 @@
                                 <?php if($datalist->regis_status == "success"): ?>
                                     <a href={{url('/home/print/'.$datalist->id)}} target="_blank" ><button class="btn btn-primary">พิมพ์</button> </a>
                                 <?php endif; ?>
+                                <a href={{url('/home/detail/'.$datalist->id)}} target="_blank" ><button class="btn btn-light">ข้อมูล</button> </a>
                             </div>
                         </td>
+                        <td scope="col">{{ $datalist -> input_user}}</td>
                         <td scope="col">{{ $datalist -> updated_at}}</td>
                     </tr>
 

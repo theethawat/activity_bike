@@ -28,6 +28,7 @@ class EditController extends BibController {
     public function editRegisterActive(Request $request){
 
         //Data Input
+        $input_username = $request->input('input_username');
         $regis_id = $request->input('regis_id');
         $regis_prefix = $request->input('regis_prefix');
         $regis_name = $request->input('regis_name');
@@ -52,13 +53,15 @@ class EditController extends BibController {
         $bib_status = $request->input('bib_status');
         $money_numberic = $request->input('money_numberic');
         $money_alphabet = $request->input('money_alphabet');  
-
+        $regis_cloth = $request->input('regis_cloth'); 
+        
         //If success payment but not bib generating (Success Payment at this edit)
         if($regis_status == "success" && $bib_status =="" ){
             $bibId = BibController::generateBib($regis_donation);
             DB::table('bike_register')->where('id',$regis_id)->
             update(
                 [
+                'input_user' => $input_username,
                 'bib_id' => $bibId,
                 'regis_status' => $regis_status,
                 'regis_prefix' => $regis_prefix,
@@ -81,7 +84,8 @@ class EditController extends BibController {
                 'regis_medal' => 'YES',
                 'regis_size' => $regis_size,
                 'donate_value'=>$money_numberic,
-                'donate_alphabet'=>$money_alphabet
+                'donate_alphabet'=>$money_alphabet,
+                'cloth_recieve'=>$regis_cloth
                 ]
         );
         }
@@ -92,6 +96,7 @@ class EditController extends BibController {
             DB::table('bike_register')->where('id',$regis_id)->
             update(
                 [
+                'input_user' => $input_username,
                 'regis_status' => $regis_status,
                 'regis_prefix' => $regis_prefix,
                 'regis_name' => $regis_name,
@@ -113,7 +118,8 @@ class EditController extends BibController {
                 'regis_medal' => 'YES',
                 'regis_size' => $regis_size,
                 'donate_value'=>$money_numberic,
-                'donate_alphabet'=>$money_alphabet
+                'donate_alphabet'=>$money_alphabet,
+                'cloth_recieve'=>$regis_cloth
                 ]
         );
         }
