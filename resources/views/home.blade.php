@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-9">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-header">Dashboard</div>
 
@@ -17,16 +17,16 @@
                     <div class="row justify-content-around">
                         <div class="col-sm-4" >
                                 <a href="{{url('/home/register')}}">
-                                    <button class="btn btn-secondary"  style="margin:1em;width:240px;">
-                                        <h2> <i class="fas fa-user-edit"></i> <br> ลงทะเบียนรับสมัคร </h2>
+                                    <button class="btn btn-secondary"  style="padding:1em;margin:1em;width:240px;">
+                                        <h3> <i class="fas fa-user-edit"></i> <br> ลงทะเบียนรับสมัคร </h3>
                                     </button>
                                 </a>
 
                         </div>
                         <div class="col-sm-4">
                                 <a href="{{url('/home/view')}}">
-                                    <button class="btn btn-secondary"  style="margin:1em;width:240px;">
-                                        <h2> <i class="fas fa-poll-h"></i> <br> ดูสถานะผู้สมัครทั้งหมด</h2>
+                                    <button class="btn btn-secondary"  style="padding:1em;margin:1em;width:240px;">
+                                        <h3> <i class="fas fa-poll-h"></i> <br> ดูสถานะผู้สมัครทั้งหมด</h3>
                                     </button>
                                 </a>
                         </div>
@@ -36,7 +36,7 @@
                     <div class="row justify-content-around">
                             <div class="col-sm-3">
                                     <a href="{{url('/home/view/specific/million')}}">
-                                        <button class="btn btn-primary" style="margin:1em;max-width:250px;height:200px;">
+                                        <button class="btn btn-primary" style="margin:1em;width:180px;height:200px;">
                                             <h4> <i class="fas fa-poll-h"></i> <br> ดูสถานะผู้สมัครสำหรับ 1,000,000 บาท</h4>
                                         </button>
                                     </a>
@@ -44,14 +44,14 @@
                             </div>
                             <div class="col-sm-3">
                                     <a href="{{url('/home/view/specific/thousand')}}">
-                                        <button class="btn btn-success" style="margin:1em;max-width:250px;height:200px;">
+                                        <button class="btn btn-success" style="margin:1em;width:180px;height:200px;">
                                             <h4> <i class="fas fa-poll-h"></i> <br> ดูสถานะผู้สมัครสำหรับ 5,000 บาท</h4>
                                         </button>
                                     </a>
                             </div>
                             <div class="col-sm-3">
                                     <a href="{{url('/home/view/specific/hundred')}}">
-                                        <button class="btn btn-warning" style="margin:1em;max-width:250px;height:200px;">
+                                        <button class="btn btn-warning" style="margin:1em;width:180px;height:200px;">
                                             <h4> <i class="fas fa-poll-h"></i> <br> ดูสถานะผู้สมัครสำหรับ 500 บาท</h4>
                                         </button>
                                     </a>

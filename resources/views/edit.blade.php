@@ -348,6 +348,24 @@
                 <option value="5000" {{$thousand}} >5,000 บาท</option>
                 <option value="500" {{$hundred}} >500 บาท</option>
             </select>
+            <br>
+            <div class="card">
+                <div class="card-body">
+                    <label>จำนวนเงินเป็นตัวเลขและตัวอักษร<strong> กรณีบริจาคมากกว่าที่กำหนด (ถ้ามีการใส่ โปรดใส่ทั้งคู่)</strong></label>
+                    <div class="row" id="optional_donation" >
+                        <div class="col-sm-6">
+                            <label>จำนวนเงินเป็นตัวเลข</label>
+                            <input type="text" name="money_numberic"  class="form-control" value="{{$data->donate_value}}">
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label>จำนวนเงินเป็นตัวอักษร</label>
+                            <input type="text" name="money_alphabet" class="form-control"  value="{{$data->donate_alphabet}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
             <label>ของที่ระลึก</label><br>
             <ul>
                 <?php
@@ -380,6 +398,7 @@
                 <option value="3XL" {{$xl3}}>3XL (รอบอก 48 นิ้ว) </option>
             </select>
             <hr>
+            
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <input type="hidden" name="regis_id" value="{{$data->id}}">
             <input type="hidden" name="bib_status" value="{{$data->bib_id}}">

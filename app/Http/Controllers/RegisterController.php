@@ -44,6 +44,8 @@ class RegisterController extends BibController {
         $sou_medal = $request->input('sou_medal');
         $regis_size = $request->input('regis_size');
         $regis_status = $request->input('regis_status');
+        $money_numberic = $request->input('money_numberic');
+        $money_alphabet = $request->input('money_alphabet');  
 
         //Generate BIB (ID for Biking) or not, Generate only success payment
         if($regis_status == "success"){
@@ -53,6 +55,20 @@ class RegisterController extends BibController {
             $bibId = NULL;
         }
 
+        if($money_alphabet != NULL&& $money_numberic != NULL)
+        {
+            $donation_alphabet = $money_alphabet;
+            $donation_numberic = $money_numberic;
+        }
+        else{
+            $donation_numberic = $regis_donation;
+            if($donation_numberic == "1000000")
+                $donation_alphabet="หนึ่งล้านบาทถ้วน";
+            if($donation_numberic == "5000")
+                $donation_alphabet="ห้าพันบาทถ้วน";
+            if($donation_numberic == "500")
+                $donation_alphabet="ห้าร้อยบาทถ้วน";
+        }
         //Insert Into Database
         DB::table('bike_register')->insert(
             [
@@ -76,7 +92,9 @@ class RegisterController extends BibController {
             'regis_donation' => $regis_donation,
             'regis_shield' => $sou_shield,
             'regis_medal' => 'YES',
-            'regis_size' => $regis_size
+            'regis_size' => $regis_size,
+            'donate_value' => $donation_numberic,
+            'donate_alphabet' => $donation_alphabet
             ]
         );
         return Redirect::to('/home');

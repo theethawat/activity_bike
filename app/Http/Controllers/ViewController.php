@@ -11,7 +11,7 @@ class ViewController extends Controller {
     /**
      * -------------------------
      * View Controller 
-     * Handling Display view to user to view and manage list of input
+     * Handling Display view to user to view and manage list of input and print recipt
      * --------------------------
      */
     public function viewResult(){
@@ -36,5 +36,10 @@ class ViewController extends Controller {
         }
         return view('view')->with('data',$regisData)
         ->with('describe',$describe);
+    }
+
+    public function printRecipt($id){
+        $regisData = DB::table('bike_register')->where('id',$id)->first();
+        return view('recipt')->with('data',$regisData);
     }
 }

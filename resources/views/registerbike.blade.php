@@ -10,7 +10,8 @@
 <div class="card-body">
 <br>
 <form action="{{url('/home/confirmreg')}}" method="POST">
-    <h3>ลงทะเบียนรายชื่อ</h3>
+    <h3>ลงทะเบียนเข้าร่วมการปั่นจักรยาน</h3>
+    <h5>ข้อมูลส่วนตัว</h5>
     <label>คำนำหน้าชื่อ</label>
     <select class="form-control col-sm-3" name="regis_prefix">
         <option value="นาย">นาย</option>
@@ -48,6 +49,7 @@
      <label>อีเมล</label>
     <input type="text" name="regis_email"  class="form-control">
     <hr>
+    <h5>ที่อยู่</h5>
     <label>ที่อยู่</label>
     <textarea  name="regis_address"  class="form-control" rows="3" required></textarea>
      <label>จังหวัด</label>
@@ -382,19 +384,56 @@
             </select>
 
             <hr>
-            <label>ชื่อทีม</label>
+            <h5>ทีมที่ลงแข่งขัน </h5>
+            <label>ชื่อทีม (Optional)</label>
             <input type="text" class="form-control" name="regis_team">
-            <label>ชื่อผู้ติดต่อเร่งด่วน</label>
+            <label>ชื่อผู้ติดต่อเร่งด่วน (Optional)</label>
             <input type="text" class="form-control" name="regis_contact">
-            <label>หมายเลขโทรศัพท์ของผู้ติดต่อเร่งด่วน</label>
+            <label>หมายเลขโทรศัพท์ของผู้ติดต่อเร่งด่วน (Optional)</label>
             <input type="text" class="form-control" name="regis_contactcall">
             <hr>
+            <h5>การบริจาคเงิน </h5>
             <label>ร่วมบริจาค</label>
-            <select class="form-control col-sm-3" name="regis_donation" required >
-                <option value="1000000">1,000,000 บาท</option>
-                <option value="5000">5,000 บาท</option>
-                <option value="500">500 บาท</option>
-            </select>
+          
+
+            <ul>
+                <input class="form-check-input" type="radio" name="regis_donation" value="1000000" id="premium_donate">1,000,0000 บาท <br>
+                <input class="form-check-input" type="radio" name="regis_donation" value="5000" id="premium_donate">5,0000 บาท <br>
+               <input class="form-check-input" type="radio" name="regis_donation" value="500">500 บาท
+            </ul>
+            <!-- <script>
+                function myFunction() {
+                var checkBox = document.getElementById("premium_donate");
+                var text = document.getElementById("optional_donation");
+                if (checkBox.checked == true){
+                    text.style.display = "block";
+                } 
+                else {
+                    text.style.display = "none";
+                }
+            }
+            </script> -->
+            <div class="card">
+                <div class="card-body">
+                    <label>จำนวนเงินเป็นตัวเลขและตัวอักษร<strong> กรณีบริจาคมากกว่าที่กำหนด (ถ้ามีการใส่ โปรดใส่ทั้งคู่)</strong></label>
+                    <div class="row" id="optional_donation" >
+                        <div class="col-sm-6">
+                            <label>จำนวนเงินเป็นตัวเลข</label>
+                            <input type="text" name="money_numberic"  class="form-control">
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label>จำนวนเงินเป็นตัวอักษร</label>
+                            <input type="text" name="money_alphabet" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+           
+            
+            <h5>ของที่ระลึก </h5>
             <label>ของที่ระลึก</label><br>
             <ul>
                 <input type="checkbox" class="form-check-input" name="sou_shield" value="YES">โล่ที่ระลึก <br>
@@ -410,14 +449,15 @@
                 <option value="2XL">2XL (รอบอก 46 นิ้ว)</option>
                 <option value="3XL">3XL (รอบอก 48 นิ้ว) </option>
             </select>
-
+            <hr>
+            <h5>สถานะ </h5>
             <label>สถานะการชำระเงิน</label>
             <select class="form-control col-sm-3" name="regis_status" required>
                     <option value="pending">รอการชำระเงิน</option>
                     <option value="success">ชำระเงินแล้ว</option>
             </select>
-            <hr>
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            
+            <input type="hidden" name="_token" value="{{ csrf_token() }}"> <br>
             <button type="submit" class="btn btn-primary "> ยืนยันการสมัคร </button>
 </form>
 </div>

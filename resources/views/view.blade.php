@@ -31,7 +31,7 @@
                         <th scope="col">Birthday</th>
                         <th scope="col">ID/Passport</th>
                         <th scope="col">เบอร์โทรศัพท์</th>
-                        <th scope="col">ที่อยู่</th>
+                        <th scope="col">ที่อยู่ (Address)</th>
                         <th scope="col">จังหวัด</th>
                         <th scope="col">สัญชาติ</th>
                         <th scope="col">ประเทศ</th>
@@ -100,14 +100,14 @@
                         <td scope="col">{{ $datalist -> regis_contactcall}}</td>
                         <td scope="col">{{ $datalist -> regis_shield}}</td>
                         <td scope="col">{{ $datalist -> regis_medal}}</td>
-                        <td scope="col">{{ $datalist -> regis_donation}}</td>
+                        <td scope="col">{{$datalist -> regis_donation}} / {{ $datalist -> donate_value}}</td>
                         <td scope="col">{{ $datalist -> regis_size}}</td>
                         <td scope="col">
                             <div class="d-flex flex-row justify-content-center">
                                 <a href={{url('/home/edit/'.$datalist->id)}} ><button class="btn btn-warning"> แก้ไข </button> </a>
                                 <a onclick="return confirm('ยินยันการลบข้อมูล')" href={{url('/home/delete/'.$datalist->id)}}  ><button class="btn btn-danger"> ลบ </button> </a>
                                 <?php if($datalist->regis_status == "success"): ?>
-                                    <a href={{url('/home/print/'.$datalist->id)}} ><button class="btn btn-primary"> พิมพ์</button> </a>
+                                    <a href={{url('/home/print/'.$datalist->id)}} target="_blank" ><button class="btn btn-primary">พิมพ์</button> </a>
                                 <?php endif; ?>
                             </div>
                         </td>

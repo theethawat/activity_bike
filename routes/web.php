@@ -36,3 +36,7 @@ Route::get('home/view/specific/{money}','ViewController@viewSpecific');
 Route::get('home/edit/{id}','EditController@editRecord');
 Route::post('/home/editreg','EditController@editRegisterActive');
 Route::get('home/delete/{id}','EditController@deleteRecord');
+/**
+ * Printing
+ */
+Route::get('home/print/{id}','ViewController@printRecipt');

@@ -50,6 +50,8 @@ class EditController extends BibController {
         $regis_size = $request->input('regis_size');
         $regis_status = $request->input('regis_status');
         $bib_status = $request->input('bib_status');
+        $money_numberic = $request->input('money_numberic');
+        $money_alphabet = $request->input('money_alphabet');  
 
         //If success payment but not bib generating (Success Payment at this edit)
         if($regis_status == "success" && $bib_status =="" ){
@@ -77,7 +79,9 @@ class EditController extends BibController {
                 'regis_donation' => $regis_donation,
                 'regis_shield' => $sou_shield,
                 'regis_medal' => 'YES',
-                'regis_size' => $regis_size
+                'regis_size' => $regis_size,
+                'donate_value'=>$money_numberic,
+                'donate_alphabet'=>$money_alphabet
                 ]
         );
         }
@@ -107,7 +111,9 @@ class EditController extends BibController {
                 'regis_donation' => $regis_donation,
                 'regis_shield' => $sou_shield,
                 'regis_medal' => 'YES',
-                'regis_size' => $regis_size
+                'regis_size' => $regis_size,
+                'donate_value'=>$money_numberic,
+                'donate_alphabet'=>$money_alphabet
                 ]
         );
         }
