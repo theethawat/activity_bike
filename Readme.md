@@ -14,6 +14,21 @@ Using PHP 7.3.2, Developby using PHP Composer and Bootstrapped by Laravel Framew
 -   Deployment in Production Mode (Now this project is in Production)
 -   After setting in file .env please run `php artisan config:cache` and `php artisan route:cache` to restart
 
+## Model-View-Controller
+
+Linking View (HTML) in `resources/views` to Routing and control in `app/http/controllers` using Routing map
+link or url to the correct controller. Route page is stored in `routes/web.php`
+
+### Example Route Writing
+
+    Route::get('/home/register', 'RegisterController@register');
+    Route::post('/home/confirmreg','RegisterController@confirmRegister');
+
+### Link Writing
+
+    <a href="{{url('/destinationlink')}} ">
+    <a href="{{url('/home/register')}} ">
+
 # Laravel Readme
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
