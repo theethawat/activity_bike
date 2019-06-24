@@ -12,8 +12,8 @@
 <form action="{{url('/home/confirmreg')}}" method="POST">
     <h3>ลงทะเบียนเข้าร่วมการปั่นจักรยาน</h3>
     <h5>ข้อมูลส่วนตัว</h5>
-    <label>คำนำหน้าชื่อ</label>
-    <select class="form-control col-sm-3" name="regis_prefix">
+    <label>คำนำหน้าชื่อ*</label>
+    <select class="form-control col-sm-3" name="regis_prefix" required>
         <option value="นาย">นาย</option>
         <option value="นาง">นาง</option>
         <option value="น.ส.">น.ส.</option>
@@ -24,35 +24,35 @@
 
     <div class="row">
         <div class="col-sm-6">
-            <label>ชื่อ</label>
+            <label>ชื่อ*</label>
             <input type="text" name="regis_name" required class="form-control">
         </div>
 
         <div class="col-sm-6">
-            <label>นามสกุล</label>
+            <label>นามสกุล*</label>
             <input type="text" name="regis_surname" required class="form-control">
         </div>
 
     </div>
 
-    <label>เพศ</label>
-    <select class="form-control col-sm-3" name="regis_sex">
+    <label>เพศ*</label>
+    <select class="form-control col-sm-3" name="regis_sex" required>
         <option value="ชาย">ชาย</option>
         <option value="หญิง">หญิง</option>
     </select>
-    <label>วัน เดือน ปีเกิด</label>
+    <label>วัน เดือน ปีเกิด*</label>
     <input type="date" name="regis_date" required class="form-control col-sm-3">
-    <label>หมายเลขบัตรประชาชน หรือ หมายเลขพาสปอร์ต</label>
+    <label>หมายเลขบัตรประชาชน หรือ หมายเลขพาสปอร์ต*</label>
     <input type="text" name="regis_peopleid" required class="form-control">
-     <label>หมายเลขโทรศัพท์</label>
+     <label>หมายเลขโทรศัพท์*</label>
     <input type="text" name="regis_call" required class="form-control">
      <label>อีเมล</label>
     <input type="text" name="regis_email"  class="form-control">
     <hr>
     <h5>ที่อยู่</h5>
-    <label>ที่อยู่</label>
+    <label>ที่อยู่*</label>
     <textarea  name="regis_address"  class="form-control" rows="3" required></textarea>
-     <label>จังหวัด</label>
+     <label>จังหวัด*</label>
     <select name="regis_province" class="form-control">
       <option value="" selected>--------- เลือกจังหวัด ---------</option>
       <option value="กรุงเทพมหานคร">กรุงเทพมหานคร</option>
@@ -133,9 +133,9 @@
       <option value="อุบลราชธานี">อุบลราชธานี</option>
       <option value="อ่างทอง">อ่างทอง </option>
 </select>
-     <label>สัญชาติ</label>
+     <label>สัญชาติ*</label>
     <input type="text" name="regis_nationality" required class="form-control">
-    <label>ประเทศ</label>
+    <label>ประเทศ*</label>
        <select  name="regis_country" class="form-control">
                 <option value="Afghanistan">Afghanistan</option>
                 <option value="Åland Islands">Åland Islands</option>
@@ -393,11 +393,11 @@
             <input type="text" class="form-control" name="regis_contactcall">
             <hr>
             <h5>การบริจาคเงิน </h5>
-            <label>ร่วมบริจาค</label>
+            <label>ร่วมบริจาค*</label>
           
 
             <ul>
-                <input class="form-check-input" type="radio" name="regis_donation" value="1000000" id="premium_donate">1,000,0000 บาท <br>
+                <input class="form-check-input" type="radio" name="regis_donation" value="1000000" id="premium_donate" required>1,000,0000 บาท <br>
                 <input class="form-check-input" type="radio" name="regis_donation" value="5000" id="premium_donate">5,0000 บาท <br>
                <input class="form-check-input" type="radio" name="regis_donation" value="500">500 บาท
             </ul>
@@ -413,7 +413,7 @@
                 }
             }
             </script> -->
-            <div class="card">
+            <div class="card bg-light">
                 <div class="card-body">
                     <label>จำนวนเงินเป็นตัวเลขและตัวอักษร<strong> กรณีบริจาคมากกว่าที่กำหนด (ถ้ามีการใส่ โปรดใส่ทั้งคู่)</strong></label>
                     <div class="row" id="optional_donation" >
@@ -439,7 +439,7 @@
                 <input type="checkbox" class="form-check-input" name="sou_shield" value="YES">โล่ที่ระลึก <br>
                 <input type="checkbox" class="form-check-input" name="sou_medal" value="YES" checked>เหรียญที่ระลึก <br>
             </ul>
-            <label>ขนาดเสื้อ</label>
+            <label>ขนาดเสื้อ*</label>
             <select class="form-control col-sm-3" name="regis_size" required>
                 <option value="SS">SS (รอบอก 36 นิ้ว)</option>
                 <option value="S">S (รอบอก 38 นิ้ว)</option>
@@ -451,7 +451,7 @@
             </select>
             <hr>
             <h5>สถานะ </h5>
-            <label>สถานะการชำระเงิน</label>
+            <label>สถานะการชำระเงิน*</label>
             <select class="form-control col-sm-3" name="regis_status" required>
                     <option value="pending">รอการชำระเงิน</option>
                     <option value="success">ชำระเงินแล้ว</option>

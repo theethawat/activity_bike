@@ -6,13 +6,20 @@
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header">Dashboard</div>
-
+                
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
+
+                   <?php
+                    $id = Auth::id();
+                    if($id <= 5){
+                        echo "<div class='alert alert-success' role='alert'>You have Administrator Permission you can add user to the site <a href='register'> Add User </a></div>";
+                    }
+                   ?>
 
                     <div class="row justify-content-around">
                         <div class="col-sm-4" >

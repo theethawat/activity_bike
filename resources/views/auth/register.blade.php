@@ -1,6 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
+@auth
+<?php
+ $userID = Auth::id();
+ if($userID <= 5){
+     $permission = true;
+ }
+else{
+    $permission = false;
+}
+    
+
+
+if($permission == true):
+?>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -74,4 +88,15 @@
         </div>
     </div>
 </div>
+<?php endif; ?>
+<?php if($permission == false): ?>
+<div class="container">
+        <p>คุณไม่มีสิทธิเข้าถึงนี้ กรุณาติดต่อแผนกกลุ่มงานดิจิทัลในการเข้าลงทะเบียน หรือ กรุณาลงชื่อเข้าใช้ในระดับแอดมิน</p>
+    </div>
+<?php endif; ?>
+@else
+    <div class="container">
+        <p>คุณไม่มีสิทธิเข้าถึงนี้ กรุณาติดต่อแผนกกลุ่มงานดิจิทัลในการเข้าลงทะเบียน หรือ กรุณาลงชื่อเข้าใช้</p>
+    </div>
+@endauth
 @endsection
