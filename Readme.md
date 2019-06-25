@@ -5,29 +5,75 @@ Using PHP 7.3.2, Developby using PHP Composer and Bootstrapped by Laravel Framew
 
 ### Developling
 
--   Can using XAMPP
--   Can using `php artisan serve`
--   Other laravel project must using [Composer](https://getcomposer.org) Package manager to install
-
-### Deploy
-
--   Deployment in Production Mode (Now this project is in Production)
--   After setting in file .env please run `php artisan config:cache` and `php artisan route:cache` to restart
+-   เนื่องจากระบบนี้ถูก Export ออกเป็น production mode แล้ว ผู้ใช้สามารถใช้ หรือ พัฒนาระบบต่อได้เลย เพียงเปิดเซิฟเวอร์ที่มี Apache Web Server, PHP 7.3.2 และ mysql หรือใช้ XAMPP ก็สามารถทำได้
+-   กรณี clone หรือ save จาก GitHub นี้ไป มันจะไม่มีไฟล์ .env ให้ ให้สร้างไฟล์ ชื่อไฟล์ `.env` แล้วนำข้อมูลจากไฟล์ `.env.example` ไปใช้ ก่อนที่จะใส่ชื่อ Database Username Password ให้ถูกต้อง
+-   ในกรณีที่จะพัฒนาแอพพลิเคชั่นบน Framework Laravel บนคอมพิวเตอร์เครื่องอื่น ๆ โปรเจกต์อื่น ๆ ให้ติดตั้ง [Composer](https://getcomposer.org) แพคเกจแมนเนจเมนต์สำหรับ php และทำการติดตั้ง path ของ php ไปยังที่ที่ถูกต้อง `C://xampp/php`
+    และทำการติดตั้ง PHP Framework Laravel ที่ [Laravel Docs](https://laravel.com/docs/)
+-   ถ้าต้องการเปลี่ยน config เช่น เลือก Database ที่ใช้ ชื่อผู้ใช้ รหัสผ่านของ Database ให้แก้ไฟล์ .env
+-   สำคัญมาก ทุกครั้งที่มีการแก้ไฟล์ `.env` ให้รันคำสั่ง `php artisan config:cache` และ `php artisan route:cache` บน Commandline ณ โฟลเดอร์ที่เก็บไฟล์ activity_bike นี้ทุกครั้ง เพื่อ Reset Cache มิเช่นนั้นเซิฟเวอร์จะเอาข้อมูลจาก .env ไฟล์เดิม
 
 ## Model-View-Controller
 
-Linking View (HTML) in `resources/views` to Routing and control in `app/http/controllers` using Routing map
-link or url to the correct controller. Route page is stored in `routes/web.php`
+### View
 
-### Example Route Writing
+การพัฒนาแอพพลิเคชั่น php โดยใช้ Laravel นี้ใช้หลักการของ Model-View-Controller โดยเราจะมี view สำหรับแสดงผล โดยใช้ blade template ซึ่งสามารถใช้ pure php แทนในการพัฒนาได้ แต่ blade template จะมีความสามารถที่สูงกว่า และคำสั่งที่ง่ายกว่า ดูรายละเอียดได้ที่ [Blade Template Docs](https://laravel.com/docs/5.8/blade) โดยไฟล์ view จะเก็บอยู่ใน `resources/views`
+
+การนำข้อมูลจากตัวแปลต่าง ๆ มาใส่ หรือ echo php code จะใช้ `{{ $variable }}` จะมีผลเท่ากัน `echo $variable;` เป็นต้น ซึ่งจะใช้แบบใดก็ได้ แล้วแต่สะดวก
+
+### Model
+
+เราจะใช้วิธีการลิงค์ โดยการเขียนลิงค์แบบปกติคือ `<a href=""></a>` แต่เราจะใส่ลิงค์เป็นในรูปแบบ `<a href="{{url('/destinationlink')}} ">` โดยที่เราจะมาควบคุมว่าลิงค์แบบนี้ จะไปอยู่ที่ไหนที่ไฟล์ `routes/web.php` มีหลักการเขียนง่าย ๆ ทั้ง แบบ Method Get และ Post โดยเราจะใช้วิธีส่งลิงค์ไปที่ คอนโทรเลอร์ที่เราต้องการจะทำ@ชื่อฟังก์ชันใน Controller นั้น
+ตัวอย่าง
 
     Route::get('/home/register', 'RegisterController@register');
     Route::post('/home/confirmreg','RegisterController@confirmRegister');
 
-### Link Writing
+### Controller
 
-    <a href="{{url('/destinationlink')}} ">
-    <a href="{{url('/home/register')}} ">
+ลักษณะการเขียนจะคล้าย ๆ Object Oriented-Programing เช่น Java, C# โดยมักจะเอาคำจาก C# มามากกว่า โดยไฟล์คอนโทรเลอร์จะอยู่ที่ `app/http/Controlles` โดยจะมี Controller หลักที่ระบบได้สร้างไว้ให้อยู่แล้วหนึ่งตัว ชื่อ controller.php และเราสามารถสร้างคอนโทรเลอร์เพิ่มได้ โดย extends จาก controller หลักไป โดย Syntax จะเริ่มต้นด้วย `<?php`
+ต่อด้วยการประกาศ namespace ว่าตอนนี้เราอยู่ที่ไหน
+
+    namespace App\Http\Controllers;
+
+จากนั้น เราจะต้อง import ฟีเจอร์ หรือ สิ่งที่เราต้องการต่าง ๆ ผ่านทาง การใช้ use โดยหลัก ๆ เลยคือเราต้อง extends Controller หลัก จะต้องมีการ `use App\Http\Controllers\Controller;` ส่วนฟีเจอร์อื่น ๆ แล้วแต่เราจะเลือกใช้งาน เช่น
+
+-   ถ้าเราต้องการใช้ Database
+
+    use App\Http\Controllers\Controller;
+
+-   ถ้าต้องการใช้ POST Method แล้วรับข้อมูลที่เป็น POST Method มา
+
+    use Illuminate\Http\Request;
+
+-   ถ้าต้องการทำการ รีไดเร็คหน้า
+
+    use Illuminate\Support\Facades\Redirect;
+
+-   ถ้าต้องการใช้ข้อมูลเกี่ยวกับ User ที่ล็อกอินอยู่ขนาดนี้
+
+    use Illuminate\Support\Facades\Auth;
+
+การเขียน controller จะเขียนเป็น class เช่น `class ViewController extends Controller {}` และข้างในจะเป็นฟังก์ชันต่าง ๆ มี privacy modifier เช่นเดียวกับ Java หรือ C# ก่อนจะจบด้วยการ return ทั้งการรีเทิร์น ค่ากลับไปยังฟังก์ชันที่เราเรียก การ return ให้ผู้ใช้กลับไปที่ view ที่เราต้องการ หรือ การ redirect โดยหลักการเขียนสิ่งต่าง ๆ ในฟังก์ชัน ใช้ภาษา php ทั้งหมด
+
+    public function viewResult(){
+        $regisData = DB::table('bike_register')->orderBy('id','ASC')->get();
+        return view('view')->with('data',$regisData)
+        ->with('describe',NULL);
+    }
+
+ตัวอย่างนี้เป็นการ Return view ไปยังหน้า describe ก็คือ `describe.blade.php` ซึ่งชื่อที่เราเขียนจะอ้างอิงจากตำแหน่ง /resource/views ถ้าหากเราสร้างโฟลเดอร์ และ เก็บ View ไว้ข้างใน เช่น สร้าง โฟลเดอร์ Frontpage มีไฟล์ `index.blade.php` เราก็จะต้องเขียน `return view('Frontpage.index');` ซึ่งการ Return ไปยัง view เราจะสามารถส่งค่าที่เราต้องการไปกับมันได้ โดยใช้ `->with('ชื่อตัวแปลใหม่',$ตัวแปลเดิม)` คือการส่งตัวแปลเดิม ให้มันไปถูกเรียกใช้ในหน้า View โดยเรากำหนดมันเป็นชื่อ ๆ หนึ่ง อาจจะเป็นชื่อเดียวกับตัวแปลเดิมก็ได้
+
+## การดึงข้อมูลจาก Database
+
+เราต้องทำการ use DB ตาม Syntax ที่ถูกต้องใน Controller ที่เราจะใช้ ฟีเจอร์ของ Database ก่อน จากนั้น เราจะต้องสร้างตัวแปลมาเก็บค่า
+
+    $ตัวแปลเก็บค่า = DB::table('ชื่อตาราง')->get();
+
+โดยกรณี `get()` จะนำข้อมูลทั้งหมดมาใช้ ที่มีเงื่อนไขที่เราต้องการ แต่ถ้าเราต้องการเพียงแค่ record เดียวที่มีเงื่อนไขที่เราต้องการให้เปลี่ยนเป็นใช้ `first()` เช่น
+
+    $ตัวแปลเก็บค่า = DB::table('ชื่อตาราง')->first();
+
+โดยก่อน method first() หรือ get() เราสามารถใส่ Attribute ของ MySQL ได้ตามที่เราต้องการเช่น `orderBy('id','DESC')`,`where('id',1)` , `where('id','<',5)` หรือจะเอาตัวแปลมาใช้ก็ได้ ถ้าตัวแปล หรือ ตัวเลขสามารถใส่ได้เลย(ตัวแปลมี `$` นำหน้าอยู่แล้ว) แต่ถ้าเป็นตัวอักษรต้องใส่ `' '` ครอบไว้
 
 # Laravel Readme
 

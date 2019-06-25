@@ -30,7 +30,7 @@
         <div class="card border-dark">
             <div class="card-body">
             <h4 class="acenter">ใบเสร็จรับเงิน</h4>
-            <h6 class="acenter">การไฟฟ้าฝ่ายผลิตแห่งประเทศไทย เขื่อนวชิราลงกรณ 444 ม.1 ต.ท่าขนุน อ.ทองผาภูมิ จ.กาญจนบุรี</h6>
+            <h6 class="acenter">เขื่อนวชิราลงกรณ 444 ม.1 ต.ท่าขนุน อ.ทองผาภูมิ จ.กาญจนบุรี</h6>
             <h6 class="aright">เลขที่ 
             <?php
                 if($data->bib_id != NULL){
@@ -50,12 +50,7 @@
             ?>
             
             </h6>
-            <hr class="border-dark">
-            <h6><strong>ชื่อกิจกรรม</strong> 10.28 กรกฎาคม BIKE @ เขื่อนวชิราลงกรณ</h6>
-            <h6><strong>รายละเอียดผู้บริจาค</strong></h6>
-            <h6><b>ชื่อ</b> {{ $data -> regis_prefix}}{{ $data -> regis_name}}  {{ $data -> regis_surname}} </h6>
-            <h6><b>ที่อยู่</b> {{ $data -> regis_address}}</h6>
-            <h6> <b>วันที่รับเงิน</b> 
+            <h6 class="aright"> <b>วันที่รับเงิน</b> 
             <?php
                 $date = date("d/m/");
                 $year = date("Y");
@@ -63,6 +58,12 @@
                 echo $date.$year;
             ?>
             </h6>
+            <hr class="border-dark">
+            <h6><strong>ชื่อกิจกรรม</strong> 10.28 กรกฎาคม BIKE @ เขื่อนวชิราลงกรณ</h6>
+            <h6><strong>รายละเอียดผู้บริจาค</strong></h6>
+            <h6><b>ชื่อ</b> {{ $data -> regis_prefix}}{{ $data -> regis_name}}  {{ $data -> regis_surname}} </h6>
+            <h6><b>ที่อยู่</b> {{ $data -> regis_address}}</h6>
+            
             <h6><strong>ประเภทการสมัคร</strong></h6>
             <ul>
                 <?php
@@ -85,8 +86,9 @@
             </div>
             <div>
                 <h6>ผู้รับเงิน ___________________________________</h6>
-                <h6>แผนกบัญชีเจ้าหนี้ เขื่อนวชิราลงกรณ<br>
-                โทร 034-599-882 ต่อ 2420-2426</h6>
+                <h6>แผนกบัญชีและการเงิน เขื่อนวชิราลงกรณ<br>
+                โทร 034-599-882<br>
+                โทร 034-599-887 ต่อ 2408, 2415</h6>
             </div>
             </div>
         </div>
