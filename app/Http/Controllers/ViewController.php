@@ -71,4 +71,9 @@ class ViewController extends Controller {
         return view('view')->with('data',$result)
         ->with('describe',$describe);
     }
+
+    public function managingUser(){
+        $userData = DB::table('users')->orderBy('id','ASC')->get();
+        return view('userview')->with('data',$userData);
+    }
 }

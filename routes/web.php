@@ -49,3 +49,4 @@ Route::get('home/print/{id}','ViewController@printRecipt');
 
 Route::get('home/search/','ViewController@searchPage');
 Route::post('/home/search/active/','ViewController@searchMethod');
+Route::get('home/manager/','ViewController@managingUser');

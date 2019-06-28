@@ -17,7 +17,7 @@
                    <?php
                     $id = Auth::id();
                     if($id <= 8){
-                        echo "<div class='alert alert-success' role='alert'>You have Administrator Permission you can add user to the site <a href='register'> Add User </a></div>";
+                        echo "<div class='alert alert-success' role='alert'>You have Administrator Permission you can add user to the site <a href='register'> Add User </a> and <a href='home/manager'> Manage User </a> </div>";
                     }
                    ?>
 

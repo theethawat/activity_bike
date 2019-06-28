@@ -86,8 +86,9 @@
         <main>
             @yield('content')
         </main>
-		<br><br>
-		<footer class="kanit acenter">ระบบมีปัญหากรุณาติดต่อ 093-674-9432  กลุ่มงานดิจิทัล เขื่อนวชิราลงกรณ <br>หรือระบบแจ้งการใช้งานขัดข้องสำหรับงานนี้<a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__hPRVCdUQVQ4NDNKRkdFSjBGWUUwM0g1WUVaWksyRS4u">คลิก</a></footer>
+		<br>
+		<footer class="kanit acenter">กลุ่มงานดิจิทัล เขื่อนวชิราลงกรณ <br> แจ้งการใช้งานขัดข้องสำหรับงานนี้ <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__hPRVCdUQVQ4NDNKRkdFSjBGWUUwM0g1WUVaWksyRS4u">คลิก</a></footer>
+        <br>
     </div>
     <!--Javascript-->
     <script src="https://kit.fontawesome.com/942c2b45e2.js"></script>
