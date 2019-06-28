@@ -5,7 +5,7 @@
 @auth
 
 
-<div class="container">
+
     <div class="card">
         <div class="card-body">
             <h3 class="kanit">รายชื่อผู้สมัครเข้าร่วมกิจกรรม </h3>
@@ -18,7 +18,7 @@
                 ?>
             </h5>
             <div class="table-responsive">
-            <table class="table table-hover">
+            <table class="table table-hover table-striped">
                 <thead class="kanit">
                     <tr>
                         <th scope="col">No.</th>
@@ -86,6 +86,10 @@
                                 if($datalist->cloth_recieve == false)
                                     print("<span class='badge badge-light'><h6>ยังไม่รับเสื้อ</h6></span>");
                             }
+							if($datalist->regis_joining == "join")
+                                print("<span class='badge badge-light'><h6>ร่วมปั่นจักรยาน</h6></span>");
+                            if($datalist->regis_joining == "nojoin")
+                                print("<span class='badge badge-light'><h6>ไม่ได้ร่วมปั่น</h6></span>");
                                 
                         ?> </td>
                         <td scope="col">{{ $datalist -> regis_prefix}}</td>
@@ -132,7 +136,7 @@
         </div>
         </div>
     </div>
-</div>
+
 
 @else
 <p>กรุณาลงชื่อเข้าใช้ก่อน</p>

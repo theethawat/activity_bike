@@ -16,6 +16,7 @@
             <select name="search_method" class="form-control col-sm-9" required>
                 <option value="name">จากชื่อ</option>
                 <option value="idcard">จากเลขบัตรประชาชน หรือ หนังสือเดินทาง</option>
+				<option value="ref_id">จากเลขที่ใบเสร็จ(พิมพ์เฉพาะตัวเลขเท่านั้น)  </option>
             </select>
             <br>
             <input type="hidden" name="_token" value="{{ csrf_token() }}">

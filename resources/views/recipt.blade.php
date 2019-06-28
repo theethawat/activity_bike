@@ -50,7 +50,7 @@
             ?>
             
             </h6>
-            <h6 class="aright"> <b>วันที่รับเงิน</b> 
+			 <h6 class="aright"> <b>วันที่รับเงิน</b> 
             <?php
                 $date = date("d/m/");
                 $year = date("Y");
@@ -63,7 +63,7 @@
             <h6><strong>รายละเอียดผู้บริจาค</strong></h6>
             <h6><b>ชื่อ</b> {{ $data -> regis_prefix}}{{ $data -> regis_name}}  {{ $data -> regis_surname}} </h6>
             <h6><b>ที่อยู่</b> {{ $data -> regis_address}}</h6>
-            
+           
             <h6><strong>ประเภทการสมัคร</strong></h6>
             <ul>
                 <?php
@@ -78,6 +78,7 @@
                 ?>
             </ul>
             <br>
+			 <h6><strong>Size เสื้อ</strong> <span class="text-uppercase">{{$data->regis_size}} </span></h6>
             <div class="aright">
                 <h6>จำนวนเงิน <u><?php
                     echo "&nbsp&nbsp".number_format($data->donate_value,2)."&nbsp&nbsp";
@@ -87,14 +88,14 @@
             <div>
                 <h6>ผู้รับเงิน ___________________________________</h6>
                 <h6>แผนกบัญชีและการเงิน เขื่อนวชิราลงกรณ<br>
-                โทร 034-599-882<br>
-                โทร 034-599-887 ต่อ 2408, 2415</h6>
+                โทร 034-599-882 <br>
+	      โทร 034-599-887 ต่อ 2408, 2415		</h6>
             </div>
             </div>
         </div>
     </div>
     <script>
-    setTimeout(() => {
+    setTimeout(function(){
         window.print()
     }, 3000);
     </script>

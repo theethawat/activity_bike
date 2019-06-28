@@ -63,6 +63,9 @@ class ViewController extends Controller {
         else if ($search_method == "idcard"){
             $result = DB::table('bike_register')->where('regis_peopleid',$search_item)->orderBy('id','DESC')->get();
         }
+		else if ($search_method == "ref_id"){
+            $result = DB::table('bike_register')->where('bib_id',$search_item)->orderBy('id','DESC')->get();
+        }
 
         $describe ="Search Result";
         return view('view')->with('data',$result)

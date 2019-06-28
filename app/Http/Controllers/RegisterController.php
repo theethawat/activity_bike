@@ -45,6 +45,7 @@ class RegisterController extends BibController {
         $sou_medal = $request->input('sou_medal');
         $regis_size = $request->input('regis_size');
         $regis_status = $request->input('regis_status');
+		$regis_joining = $request->input('regis_joining');
         $money_numberic = $request->input('money_numberic');
         $money_alphabet = $request->input('money_alphabet'); 
         $regis_cloth = $request->input('regis_cloth'); 
@@ -61,7 +62,17 @@ class RegisterController extends BibController {
         {
             $donation_alphabet = $money_alphabet;
             $donation_numberic = $money_numberic;
+			 // Checking if it not in mindset  
+			if($money_numberic != $regis_donation){
+				if($money_numberic <= 4999)
+					$regis_donation = 500;
+				else if($money_numberic >= 5000 && $money_numberic <=999999)
+					$regis_donation = 5000;
+				else if($money_numberic >= 1000000)
+					$regis_donation = 1000000;
+			}
         }
+		
         else{
             $donation_numberic = $regis_donation;
             if($donation_numberic == "1000000")
@@ -71,6 +82,9 @@ class RegisterController extends BibController {
             if($donation_numberic == "500")
                 $donation_alphabet="ห้าร้อยบาทถ้วน";
         }
+		
+		
+		
         //Insert Into Database
         DB::table('bike_register')->insert(
             [
@@ -98,10 +112,11 @@ class RegisterController extends BibController {
             'regis_size' => $regis_size,
             'donate_value' => $donation_numberic,
             'donate_alphabet' => $donation_alphabet,
-            'cloth_recieve'=>$regis_cloth
+            'cloth_recieve'=>$regis_cloth,
+			  'regis_joining'=>$regis_joining
             ]
         );
-        return Redirect::to('/home');
+        return Redirect::to('/home/view');
     }
 
     

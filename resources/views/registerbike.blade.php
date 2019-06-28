@@ -432,32 +432,58 @@
         ----------------------------------------------
     -->
         <h4>การบริจาคเงิน </h4>
-        <label>ร่วมบริจาค*</label>
-        <select class="form-control" required name="regis_donation">
-            <option value="1000000">1,000,000 บาท</option>
-            <option value="1000000">5,000 บาท</option>
-            <option value="1000000">500 บาท</option>
-        </select>
+        <label>ร่วมบริจาค*</label><br>
+		<ul>
+		 <input type="radio" id="selectmillion" name="regis_donation" class="form-check-input" value="1000000"> 1,000,000 บาท <br>
+		 <input type="radio" id="selectthousand" name="regis_donation" class="form-check-input" value="5000"> 5,000 บาท <br>
+		 <input type="radio" id="selecthundred" name="regis_donation" class="form-check-input" value="500" checked> 500 บาท <br>
+		 <input type="radio" id="selecthother1" name="regis_donation" class="form-check-input" value="5000"> 5,001 - 999,999บาท <br>
+		 <input type="radio" id="selecthother2" name="regis_donation" class="form-check-input" value="1000000">  มากกว่า 1,000,000 บาท <br>
+        </ul>
+	
 
         <br>
-  
-        <div class="card bg-light">
+        <div class="card bg-light" id="donatemore" style="display:none;">
             <div class="card-body">
-            <h5>สำหรับผู้ที่บริจาคมากกว่า 5,000 บาท</h5>
+            <h5>สำหรับผู้ที่บริจาคมากกว่าจำนวนเงิน</h5>
+				<div class="alert alert-danger">
+					<h5> ถ้ามีการใส่ ต้องใส่ข้อมูลทั้งตัวเลขและตัวอักษร  เท่านั้น</h5>
+				</div>
                 <label>จำนวนเงินเป็นตัวเลขและตัวอักษร<strong> กรณีบริจาคมากกว่าที่กำหนด (ถ้ามีการใส่ โปรดใส่ทั้งคู่)</strong></label>
                     <div class="row" id="optional_donation" >
                         <div class="col-sm-6">
                             <label>จำนวนเงินเป็นตัวเลข</label>
-                            <input type="number" min="5000" name="money_numberic"  class="form-control">
+                            <input type="number" name="money_numberic"  class="form-control">
                         </div>
 
                         <div class="col-sm-6">
                             <label>จำนวนเงินเป็นตัวอักษร</label>
-                            <input type="text" name="money_alphabet" class="form-control" placeholder="เช่น ห้าพันสองร้อยบาทถ้วน">
+                            <input type="text" name="money_alphabet" class="form-control" placeholder="เช่น ห้าพันสองร้อยบาทถ้วน หรือ สองล้านบาทถ้วน">
                         </div>
                     </div>
             </div>
         </div>
+		<script>
+		$(document).ready(function(){
+			$("#selecthother1").on("click",function(){
+				$("#donatemore").show();
+			});
+			$("#selecthother2").on("click",function(){
+				$("#donatemore").show();
+			});
+			$("#selectmillion").on("click",function(){
+				$("#donatemore").hide();
+			});
+			$("#selectthousand").on("click",function(){
+				$("#donatemore").hide();
+			});
+			$("#selecthundred").on("click",function(){
+				$("#donatemore").hide();
+			});
+		
+
+});
+		</script>
             <br>
 
             <!--
@@ -495,7 +521,14 @@
             <label>สถานะการชำระเงิน*</label>
             <select class="form-control col-sm-3" name="regis_status" required>
                      <option value="success">ชำระเงินแล้ว</option>
-                     <option value="pending">รอการชำระเงิน</option>
+                     <option value="pending" selected>รอการชำระเงิน</option>
+                   
+            </select>
+            <br>
+			 <label>ร่วมกิจกรรม*</label>
+            <select class="form-control col-sm-3" name="regis_joining" required>
+                     <option value="join">ร่วมปั่นจักรยาน</option>
+                     <option value="nojoin">ไม่ร่วมปั่นจักรยาน</option>
                    
             </select>
             <br>

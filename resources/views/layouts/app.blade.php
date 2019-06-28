@@ -11,7 +11,10 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+	<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet"> 
@@ -80,9 +83,11 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
+		<br><br>
+		<footer class="kanit acenter">ระบบมีปัญหากรุณาติดต่อ 093-674-9432  กลุ่มงานดิจิทัล เขื่อนวชิราลงกรณ <br>หรือระบบแจ้งการใช้งานขัดข้องสำหรับงานนี้<a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__hPRVCdUQVQ4NDNKRkdFSjBGWUUwM0g1WUVaWksyRS4u">คลิก</a></footer>
     </div>
     <!--Javascript-->
     <script src="https://kit.fontawesome.com/942c2b45e2.js"></script>

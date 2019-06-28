@@ -354,14 +354,19 @@
                     $donate == "500" ? $hundred ="selected" : $hundred ="";
 
                 ?>
-                <option value="1000000" {{$million}} >1,000,000 บาท</option>
-                <option value="5000" {{$thousand}} >5,000 บาท</option>
-                <option value="500" {{$hundred}} >500 บาท</option>
+                <option value="1000000" {{$million}} > ชนิด 1,000,000 บาท</option>
+                <option value="5000" {{$thousand}} > ชนิด 5,000 บาท</option>
+                <option value="500" {{$hundred}} > ชนิด 500 บาท</option>
             </select>
             <br>
-            <div class="card">
+			<label>จำนวนเงินบริจาคจริง ๆ {{$data->donate_value}} บาท</label> <br>
+			<button class="btn btn-info kanit" id="donate-more-edit-button" type="button">แก้ไขจำนวนเงินบริจาค (กรณีบริจาคมากกว่าค่าสมัคร) </button>
+            <div class="card bg-light" id="donate-more-edit" style="display:none;">
                 <div class="card-body">
-                    <label>จำนวนเงินเป็นตัวเลขและตัวอักษร<strong> กรณีบริจาคมากกว่าที่กำหนด (ถ้ามีการใส่ โปรดใส่ทั้งคู่)</strong></label>
+					<div class="alert alert-danger">
+					<h5> ถ้ามีการใส่ ต้องใส่ข้อมูลทั้งตัวเลขและตัวอักษร  เท่านั้น ถ้ามีการแก้ไข จะยึดตามจำนวนเลขที่เขียน</h5>
+					</div>
+                    <label>จำนวนเงินเป็นตัวเลขและตัวอักษร<strong> กรณีบริจาคมากกว่าที่กำหนด </strong></label>
                     <div class="row" id="optional_donation" >
                         <div class="col-sm-6">
                             <label>จำนวนเงินเป็นตัวเลข</label>
@@ -375,6 +380,15 @@
                     </div>
                 </div>
             </div>
+			<script>
+			$(document).ready(function(){
+				$("#donate-more-edit-button").click(function(){
+					$("#donate-more-edit").toggle();
+				});
+				
+			});
+			</script>
+			
             <br>
             <label>ของที่ระลึก</label><br>
             <ul>
@@ -408,7 +422,17 @@
                 <option value="3XL" {{$xl3}}>3XL (รอบอก 48 นิ้ว) </option>
             </select>
             <hr>
-            
+			<?php
+			 $joining = $data->regis_joining;
+			 $joining == "join"? $join = "selected" :$join = "";
+			 $joining == "nojoin"? $nojoin = "selected" :$nojoin = "";
+			?>
+            <label>ร่วมกิจกรรม*</label>
+            <select class="form-control col-sm-3" name="regis_joining" required>
+                     <option value="join" {{$join}}>ร่วมปั่นจักรยาน</option>
+                     <option value="nojoin" {{$nojoin}}>ไม่ร่วมปั่นจักรยาน</option>
+                   
+            </select>
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <input type="hidden" name="regis_id" value="{{$data->id}}">
             <input type="hidden" name="bib_status" value="{{$data->bib_id}}">
