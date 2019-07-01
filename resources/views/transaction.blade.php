@@ -126,9 +126,9 @@
                         <td scope="col">
                         <?php
                             if($datalist->cloth_recieve == true)
-                                    print("<i class='fas fa-times'></i>");
-                                if($datalist->cloth_recieve == false)
                                     print("<i class='fas fa-check'></i>");
+                                if($datalist->cloth_recieve == false)
+                                    print("<i class='fas fa-times'></i>");
                         ?>
                         
                         </td>
@@ -137,9 +137,9 @@
                                 <?php
                         
 							    if($datalist->regis_joining == "join")
-                                print("<i class='fas fa-times'></i>");
+                                    print("<i class='fas fa-check'></i>"); 
                                 if($datalist->regis_joining == "nojoin")
-                                print("<i class='fas fa-check'></i>");
+                                    print("<i class='fas fa-times'></i>");
                                 
                                 ?> 
                          </td> 
