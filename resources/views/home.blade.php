@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-9">
             <div class="card">
                 <div class="card-header">Dashboard</div>
                 
@@ -17,23 +17,23 @@
                    <?php
                     $id = Auth::id();
                     if($id <= 8){
-                        echo "<div class='alert alert-success' role='alert'>You have Administrator Permission you can add user to the site <a href='register'> Add User </a> and <a href='home/manager'> Manage User </a> </div>";
+                        echo "<div class='alert alert-secondary acenter' role='alert'>You have Administrator Permission you can add user to the site <a href='register'> Add User </a> and <a href='home/manager'> Manage User </a> </div>";
                     }
                    ?>
 
                     <div class="row justify-content-around">
-                        <div class="col-sm-4" >
-                                <a href="{{url('/home/register')}}">
-                                    <button class="btn btn-warning kanit"  style="padding:1em;margin:1em;width:240px;">
-                                        <h3> <i class="fas fa-user-edit"></i> <br> ลงทะเบียนรับสมัคร </h3>
+                        <div class="col-sm-6" >
+                                <a href="{{url('/home/register')}}" style="text-decoration:none;">
+                                    <button class="btn btn-warning kanit piccenter"  style="padding:1em;width:250px;height:200px;">
+                                       <h1><i class="fas fa-user-edit"></i> </h1>   <h3>ลงทะเบียนรับสมัคร </h3>
                                     </button>
                                 </a>
 
                         </div>
-                        <div class="col-sm-4">
-                                <a href="{{url('/home/view')}}">
-                                    <button class="btn btn-success kanit"  style="padding:1em;margin:1em;width:240px;">
-                                        <h3> <i class="fas fa-poll-h"></i> <br> ดูสถานะผู้สมัครทั้งหมด</h3>
+                        <div class="col-sm-6">
+                                <a href="{{url('/home/view')}}" style="text-decoration:none;">
+                                    <button class="btn btn-success kanit piccenter"  style="padding:1em;width:250px;height:200px;">
+                                       <h1><i class="fas fa-poll-h"></i></h1>  <h3>  ดูสถานะผู้สมัครทั้งหมด</h3>
                                     </button>
                                 </a>
                         </div>

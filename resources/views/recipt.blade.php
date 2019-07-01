@@ -30,6 +30,7 @@
         <div class="card border-dark">
             <div class="card-body">
             <h4 class="acenter">ใบเสร็จรับเงิน</h4>
+            <h5 class="acenter">10.28 กรกฎาคม BIKE @ เขื่อนวชิราลงกรณ</h5>
             <h6 class="acenter">เขื่อนวชิราลงกรณ 444 ม.1 ต.ท่าขนุน อ.ทองผาภูมิ จ.กาญจนบุรี</h6>
             <h6 class="aright">เลขที่ 
             <?php
@@ -59,7 +60,7 @@
             ?>
             </h6>
             <hr class="border-dark">
-            <h6><strong>ชื่อกิจกรรม</strong> 10.28 กรกฎาคม BIKE @ เขื่อนวชิราลงกรณ</h6>
+            
             <h6><strong>รายละเอียดผู้บริจาค</strong></h6>
             <h6><b>ชื่อ</b> {{ $data -> regis_prefix}}{{ $data -> regis_name}}  {{ $data -> regis_surname}} </h6>
             <h6><b>ที่อยู่</b> {{ $data -> regis_address}}</h6>

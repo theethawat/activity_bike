@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>10.28 กรกฎาคม BIKE @ เขื่อนวชิราลงกรณ</title>
-
+  
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 	<script
@@ -28,14 +28,19 @@
         .acenter{
             text-align:center;
         }
+        .piccenter{
+            display:block;
+            margin-left:auto;
+            margin-right:auto;
+        }
     </style>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-danger bg-dangre navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar  navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand kanit " href="{{ url('/') }}">
-                ระบบลงทะเบียนเข้าร่วมงาน 10.28 กรกฎาคม BIKE @ เขื่อนวชิราลงกรณ 
+                <i class="fas fa-biking"></i> ระบบลงทะเบียน 10.28 กรกฎาคม BIKE @ เขื่อนวชิราลงกรณ 
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -84,10 +89,11 @@
         </nav>
 
         <main>
+            <br>
             @yield('content')
         </main>
 		<br>
-		<footer class="kanit acenter">กลุ่มงานดิจิทัล เขื่อนวชิราลงกรณ <br> แจ้งการใช้งานขัดข้องสำหรับงานนี้ <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__hPRVCdUQVQ4NDNKRkdFSjBGWUUwM0g1WUVaWksyRS4u">คลิก</a></footer>
+		<footer class=" acenter"><span class="kanit">ดูแลระบบโดยกลุ่มงานดิจิทัล เขื่อนวชิราลงกรณ (ดท-ขว. อขว.) </span><br> กรณีระบบมีปัญหาสามารถ แจ้งการใช้งานขัดข้องสำหรับงานนี้ <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__hPRVCdUQVQ4NDNKRkdFSjBGWUUwM0g1WUVaWksyRS4u">คลิก</a> หรือทางโทรศัพท์ภายในองค์กร V 2.1.0</footer>
         <br>
     </div>
     <!--Javascript-->

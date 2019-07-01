@@ -10,7 +10,7 @@
 <div class="card-body">
 
 <form action="{{url('/home/confirmreg')}}" method="POST">
-    <h3 >ลงทะเบียนเข้าร่วมกิจกรรม 10.28 กรกฎาคม BIKE @ เขื่อนวชิราลงกรณ </h3> <hr>
+    <h3 class="kanit"> <i class="fas fa-user-edit"></i> ลงทะเบียนเข้าร่วมกิจกรรม  </h3><h4 class="kanit">10.28 กรกฎาคม BIKE @ เขื่อนวชิราลงกรณ </h4> <hr>
     <!--
         ----------------------------------------------
         /*------SESSION 1 ข้อมูลส่วนตัว ------------------------*/
@@ -30,42 +30,82 @@
             <div class="row">
                 <div class="col-sm-6">
                     <label>ชื่อ*</label>
-                    <input type="text" name="regis_name" required class="form-control">
+                    <div class="input-group mb-2 mr-sm-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fas fa-user"></i></div>
+                        </div>
+                        <input type="text" name="regis_name" required class="form-control">
+                    </div>
                 </div>
 
-                <div class="col-sm-6">
+                <div class="col-sm-6"> 
                     <label>นามสกุล*</label>
-                    <input type="text" name="regis_surname" required class="form-control">
+                        <div class="input-group mb-2 mr-sm-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-user-friends"></i></div>
+                            </div>
+                            <input type="text" name="regis_surname" required class="form-control">
+                        </div>
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-sm-4">
                     <label>เพศ*</label>
-                    <select class="form-control " name="regis_sex" required>
-                        <option value="ชาย">ชาย</option>
-                        <option value="หญิง">หญิง</option>
-                    </select>
+                    <div class="input-group mb-2 mr-sm-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-mars"></i></div>
+                            </div>
+                            <select class="form-control " name="regis_sex" required>
+                                <option value="ชาย">ชาย</option>
+                                <option value="หญิง">หญิง</option>
+                            </select>
+                        </div>
                 </div>
                 <div class="col-sm-4">
                     <label>วันเกิด(เดือน/วัน/ปี)*</label>
-                    <input type="date" name="regis_date" required class="form-control ">
+                    <div class="input-group mb-2 mr-sm-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-calendar-alt"></i></div>
+                            </div>
+                            <input type="date" name="regis_date" required class="form-control ">
+                        </div>
+                    
+                    
                 </div>
                 <div class="col-sm-4">
                     <label>หมายเลขโทรศัพท์*  </label>
-                    <input type="text" name="regis_call" required class="form-control ">
+                    <div class="input-group mb-2 mr-sm-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-phone-alt"></i></div>
+                            </div>
+                            <input type="text" name="regis_call" required class="form-control ">
+                        </div>
+                    
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-sm-6">
                     <label>หมายเลขบัตรประชาชน หรือ หมายเลขหนังสือเดินทาง*</label>
-                    <input type="text" name="regis_peopleid" required class="form-control ">
+                    <div class="input-group mb-2 mr-sm-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-id-card"></i></div>
+                            </div>
+                            <input type="text" name="regis_peopleid" required class="form-control ">
+                        </div>
+                    
                 </div>
                 
                 <div class="col-sm-6">
                     <label>อีเมล </label>
-                    <input type="email" name="regis_email"  class="form-control ">
+                    <div class="input-group mb-2 mr-sm-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="far fa-envelope"></i></div>
+                            </div>
+                            <input type="email" name="regis_email"  class="form-control ">
+                        </div>
+                    
                 </div>
             </div>
     <hr>

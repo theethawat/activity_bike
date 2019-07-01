@@ -6,9 +6,12 @@
 
 
 
-    <div class="card">
-        <div class="card-body">
-            <h3 class="kanit">รายชื่อผู้สมัครเข้าร่วมกิจกรรม </h3>
+    <div class="container">
+            <h3 class="kanit"><i class="fas fa-user-friends"></i> รายชื่อผู้สมัครเข้าร่วมกิจกรรม 
+            <?php if($donate_money != NULL): ?>
+                <a href="{{url('/home/transaction/'.$donate_money)}} "> <button class="btn btn-primary"><i class="fas fa-print"></i> พิมพ์</button> </a>
+            <?php endif;?>
+            </h3>
             <h5>
                 <?php
                 if($describe != NULL)
@@ -19,7 +22,7 @@
             </h5>
             <div class="table-responsive">
             <table class="table table-hover table-striped">
-                <thead class="kanit">
+                <thead class="kanit acenter">
                     <tr>
                         <th scope="col">No.</th>
                         <th scope="col">BIB</th>
@@ -29,16 +32,9 @@
                         <th scope="col">นามสกุล</th>
                         <th scope="col">ไซส์</th>
                         <th scope="col">เพศ</th>
-                        <!-- <th scope="col">Birthday</th> -->
                         <th scope="col">ID/Passport</th>
                         <th scope="col">เบอร์โทรศัพท์</th>
-                        <!-- <th scope="col">ที่อยู่ (Address)</th> -->
-                        <!-- <th scope="col">จังหวัด</th>
-                        <th scope="col">สัญชาติ</th>
-                        <th scope="col">ประเทศ</th> -->
                         <th scope="col">ทีม</th>
-                        <!-- <th scope="col">ผู้ติดต่อฉุกเฉิน</th>
-                        <th scope="col">เบอร์โทรผู้ติดต่อฉุกเฉิน</th> -->
                         <th scope="col">รับโล่</th>
                         <th scope="col">รับเหรียญ</th>
                         <th scope="col">เงินบริจาค</th>
@@ -75,23 +71,26 @@
                         }
                         ?>
                         </td>
-                        <td scope="col"><?php
+                        <td scope="col "><?php
                             $status = $datalist->regis_status;
                             if($status == "pending")
-                                print("<span class='badge badge-danger'><h6>รอการชำระ</h6></span>");
+                                print("<span class='badge badge-danger kanit piccenter'><i class='fas fa-ban'></i> <h6>รอชำระ</h6></span>");
                             if($status == "success"){
-                                print("<span class='badge badge-success'><h6>ชำระเงินเรียบร้อย</h6></span><br>");
-                                if($datalist->cloth_recieve == true)
-                                    print("<span class='badge badge-warning'><h6>รับเสื้อแล้ว</h6></span>");
-                                if($datalist->cloth_recieve == false)
-                                    print("<span class='badge badge-light'><h6>ยังไม่รับเสื้อ</h6></span>");
+                                print("<span class='badge badge-success kanit piccenter'><h6> <i class='fas fa-check-circle'></i> ชำระเรียบร้อย</h6></span>");
                             }
+                            
+                            if($datalist->cloth_recieve == true)
+                                print("<span class='badge badge-warning kanit piccenter'><h6><i class='fas fa-check-circle'></i> รับเสื้อแล้ว</h6></span>");
+                            if($datalist->cloth_recieve == false)
+                                print("<span class='badge badge-light kanit piccenter'><h6><i class='fas fa-tshirt'></i>  ยังไม่รับเสื้อ</h6></span>");
 							if($datalist->regis_joining == "join")
-                                print("<span class='badge badge-light'><h6>ร่วมปั่นจักรยาน</h6></span>");
+                                print("<span class='badge badge-light kanit piccenter'><h6><i class='fas fa-biking'></i> ร่วมปั่น</h6></span>");
                             if($datalist->regis_joining == "nojoin")
-                                print("<span class='badge badge-light'><h6>ไม่ได้ร่วมปั่น</h6></span>");
+                                print("<span class='badge badge-light kanit piccenter'><h6><i class='fas fa-biking'></i> ไม่ได้ร่วมปั่น</h6></span>");
                                 
-                        ?> </td>
+                        ?> 
+                           
+                        </td>
                         <td scope="col">{{ $datalist -> regis_prefix}}</td>
                         <td scope="col">{{ $datalist -> regis_name}}</td>
                         <td scope="col">{{ $datalist -> regis_surname}}</td>
@@ -105,25 +104,22 @@
                             </td> -->
                         <td scope="col">{{ $datalist -> regis_peopleid}}</td>
                         <td scope="col">{{ $datalist -> regis_call}}</td>
-                        <!-- <td scope="col">{{ $datalist -> regis_address}}</td> -->
-                        <!-- <td scope="col">{{ $datalist -> regis_province}}</td>
-                        <td scope="col">{{ $datalist -> regis_nationality}}</td>
-                        <td scope="col">{{ $datalist -> regis_country}}</td> -->
+                     
                         <td scope="col">{{ $datalist -> regis_team}}</td>
-                        <!-- <td scope="col">{{ $datalist -> regis_contact}}</td>
-                        <td scope="col">{{ $datalist -> regis_contactcall}}</td> -->
+   
                         <td scope="col">{{ $datalist -> regis_shield}}</td>
                         <td scope="col">{{ $datalist -> regis_medal}}</td>
                         <td scope="col">{{$datalist -> regis_donation}} / {{ $datalist -> donate_value}}</td>
                         
                         <td scope="col">
-                            <div class="d-flex flex-row justify-content-center">
-                                <a href={{url('/home/edit/'.$datalist->id)}} ><button class="btn btn-warning"> แก้ไข </button> </a>
-                                <a onclick="return confirm('ยินยันการลบข้อมูล')" href={{url('/home/delete/'.$datalist->id)}}  ><button class="btn btn-danger"> ลบ </button> </a>
+                            <div class="d-flex flex-row justify-content-center kanit">
+                                <a href={{url('/home/edit/'.$datalist->id)}} ><button style="width:60px; margin-right:0.3em;" class="btn btn-warning"> <i class="fas fa-user-edit"></i> <br> แก้ไข </button> </a>
+                                <a onclick="return confirm('ยินยันการลบข้อมูล')" href={{url('/home/delete/'.$datalist->id)}}  ><button style="width:60px; margin-right:0.3em;" class="btn btn-danger"><i class="fas fa-trash-alt"></i> <br> ลบ </button> </a>
+                                
                                 <?php if($datalist->regis_status == "success"): ?>
-                                    <a href={{url('/home/print/'.$datalist->id)}} target="_blank" ><button class="btn btn-primary">พิมพ์</button> </a>
+                                    <a href={{url('/home/print/'.$datalist->id)}} target="_blank" ><button style="width:60px; margin-right:0.3em;" class="btn btn-primary"><i class="fas fa-print"></i> <br> พิมพ์</button> </a>
                                 <?php endif; ?>
-                                <a href={{url('/home/detail/'.$datalist->id)}} target="_blank" ><button class="btn btn-light">ข้อมูล</button> </a>
+                                <a href={{url('/home/detail/'.$datalist->id)}} target="_blank" ><button style="width:60px; margin-right:0.3em;" class="btn btn-info"><i class="fas fa-info-circle"></i><br> ข้อมูล</button> </a>
                             </div>
                         </td>
                         <td scope="col">{{ $datalist -> input_user}}</td>
@@ -133,7 +129,6 @@
                 @endforeach
                 </tbody>
             </table>
-        </div>
         </div>
     </div>
 

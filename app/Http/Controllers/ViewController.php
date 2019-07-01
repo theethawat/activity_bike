@@ -17,7 +17,7 @@ class ViewController extends Controller {
     public function viewResult(){
         $regisData = DB::table('bike_register')->orderBy('id','ASC')->get();
         return view('view')->with('data',$regisData)
-        ->with('describe',NULL);
+        ->with('describe',NULL)->with('donate_money','all');
     }
 
     public function viewSpecific($money){
@@ -35,7 +35,7 @@ class ViewController extends Controller {
             $describe ="สำหรับผู้บริจาคเงิน 500 บาท";
         }
         return view('view')->with('data',$regisData)
-        ->with('describe',$describe);
+        ->with('describe',$describe)->with('donate_money',$money);
     }
 
     public function printRecipt($id){
@@ -69,11 +69,31 @@ class ViewController extends Controller {
 
         $describe ="Search Result";
         return view('view')->with('data',$result)
-        ->with('describe',$describe);
+        ->with('describe',$describe)->with('donate_money',NULL);
     }
 
     public function managingUser(){
         $userData = DB::table('users')->orderBy('id','ASC')->get();
         return view('userview')->with('data',$userData);
+    }
+
+    public function transactionPrinting($donate){
+        if($donate == "million"){
+            $regisData = DB::table('bike_register')->where('regis_donation','1000000')->orderBy('id','ASC')->get();
+            $describe ="สำหรับผู้บริจาคเงิน 1,000,000 บาท";
+        }
+        if($donate == "thousand"){
+            $regisData = DB::table('bike_register')->where('regis_donation','5000')->orderBy('id','ASC')->get();
+            $describe ="สำหรับผู้บริจาคเงิน 5,000 บาท";
+        }
+        if($donate == "hundred"){
+            $regisData = DB::table('bike_register')->where('regis_donation','500')->orderBy('id','ASC')->get();
+            $describe ="สำหรับผู้บริจาคเงิน 500 บาท";
+        }
+        if($donate == "all"){
+            $regisData = DB::table('bike_register')->orderBy('id','ASC')->get();
+            $describe ="สำหรับทุกจำนวนเงินบริจาค";
+        }
+        return view('transaction')->with('data',$regisData)->with('describe',$describe);
     }
 }
