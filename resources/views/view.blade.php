@@ -6,7 +6,7 @@
 
 
 
-    <div class="container">
+    <div >
             <h3 class="kanit"><i class="fas fa-user-friends"></i> รายชื่อผู้สมัครเข้าร่วมกิจกรรม 
             <?php if($donate_money != NULL): ?>
                 <a href="{{url('/home/transaction/'.$donate_money)}} "> <button class="btn btn-primary"><i class="fas fa-print"></i> พิมพ์</button> </a>

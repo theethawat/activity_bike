@@ -51,3 +51,4 @@ Route::get('home/search/','ViewController@searchPage');
 Route::post('/home/search/active/','ViewController@searchMethod');
 Route::get('home/manager/','ViewController@managingUser');
 Route::get('home/transaction/{donate}','ViewController@transactionPrinting');
+Route::get('/home/size','ViewController@sizeCounter');

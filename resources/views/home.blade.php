@@ -20,7 +20,9 @@
                         echo "<div class='alert alert-secondary acenter' role='alert'>You have Administrator Permission you can add user to the site <a href='register'> Add User </a> and <a href='home/manager'> Manage User </a> </div>";
                     }
                    ?>
-
+                    <div class="alert alert-info acenter" role="alert">
+                        Update Version 2.1.1  7/4/2019 เพิ่มระบบนับจำนวนเสื้อ
+                    </div>
                     <div class="row justify-content-around">
                         <div class="col-sm-6" >
                                 <a href="{{url('/home/register')}}" style="text-decoration:none;">
@@ -73,7 +75,15 @@
                                         </button>
                                     </a>
                             </div> 
+                            <div class="col-sm-5">
+                                    <a href="{{url('/home/size')}}">
+                                        <button class="btn btn-warning kanit" style="margin:0.8em;height:50px;">
+                                            <h6><i class="fas fa-tshirt"></i>  จำนวนคนแต่ละ Size เสื้อ</h6>
+                                        </button>
+                                    </a>
+                            </div> 
                     </div>
+                    
             </div>
         </div>
     </div>

@@ -93,7 +93,7 @@
             @yield('content')
         </main>
 		<br>
-		<footer class=" acenter"><span class="kanit">ดูแลระบบโดยกลุ่มงานดิจิทัล เขื่อนวชิราลงกรณ (ดท-ขว. อขว.) </span><br> กรณีระบบมีปัญหาสามารถ แจ้งการใช้งานขัดข้องสำหรับงานนี้ <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__hPRVCdUQVQ4NDNKRkdFSjBGWUUwM0g1WUVaWksyRS4u">คลิก</a> หรือทางโทรศัพท์ภายในองค์กร V 2.1.0</footer>
+		<footer class=" acenter"><span class="kanit">ดูแลระบบโดยกลุ่มงานดิจิทัล เขื่อนวชิราลงกรณ (ดท-ขว. อขว.) </span><br> กรณีระบบมีปัญหาสามารถ แจ้งการใช้งานขัดข้องสำหรับงานนี้ <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__hPRVCdUQVQ4NDNKRkdFSjBGWUUwM0g1WUVaWksyRS4u">คลิก</a> หรือทางโทรศัพท์ภายในองค์กร V 2.1.1</footer>
         <br>
     </div>
     <!--Javascript-->

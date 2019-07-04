@@ -96,4 +96,37 @@ class ViewController extends Controller {
         }
         return view('transaction')->with('data',$regisData)->with('describe',$describe);
     }
+
+    public function sizeCounter(){
+        $databaseQuery = DB::table('bike_register')->orderBy('id','ASC')->get();
+        $size_ss = 0;
+        $size_s = 0;
+        $size_m = 0;
+        $size_l = 0;
+        $size_xl = 0;
+        $size_2xl = 0;
+        $size_3xl = 0;
+        $blank = 0;
+         foreach ($databaseQuery as $data) {
+            $selectedSize = $data->regis_size;
+            switch ($selectedSize) {
+                case 'SS':$size_ss ++;break;
+                case 'S':$size_s ++; break;
+                case 'M':$size_m++;break;
+                case 'L':$size_l++;break;
+                case 'XL':$size_xl++;break;
+                case '2XL':$size_2xl++;break;
+                case '3XL':$size_3xl++;break;
+                default:$blank++; break;
+            }
+        }
+        return view('showsize')
+        ->with('ss',$size_ss)
+        ->with('s',$size_s)
+        ->with('m',$size_m)
+        ->with('l',$size_l)
+        ->with('xl',$size_xl)
+        ->with('xl2',$size_2xl)
+        ->with('xl3',$size_3xl);
+    }
 }
