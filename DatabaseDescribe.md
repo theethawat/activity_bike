@@ -1,0 +1,29 @@
+# Database Description
+
+-   `id` int(6) Unique ID ในการ Fetch ข้อมูล -`regis_status` varchar(128) สถานะการสมัคร ถ้าจ่ายเงินแล้ว `active` ยังไม่จ่าย `pending`
+-   `bib_id` int(6) ตัวเลขไอดี รันตามลำดับ ในแต่ละรุ่น (500, 5000, 1000000) โดยคนที่ยังไม่จ่ายเงินค่าตรงนี้จะเป็น `NULL`
+-   `regis_prefix` varchar(255) คำนำหน้าชื่อ
+-   `regis_name` varchar(255) ชื่อ
+-   `regis_surname` varchar(255) นามสกุล
+-   `regis_sex` varchar(128) เพศ `หญิง`,`ชาย`
+-   `regis_date` date วันเกิด
+-   `regis_peopleid` varchar(255) หมายเลขบัตรประชาชนหรือหนังสือเดินทาง
+-   `regis_call` varchar(255) หมายเลขโทรศัพท์
+-   `regis_email` varchar(255) อีเมล (Optional)
+-   `regis_address` varchar(255) ที่อยู่
+-   `regis_province` varchar(255) จังหวัด
+-   `regis_nationality` varchar(128) สัญชาติ (เป็นภาษาไทย)
+-   `regis_country` varchar(255) ประเทศ เป็นภาษาอังกฤษ
+-   `regis_team` varchar(128) ชื่อทีม (Optional)
+-   `regis_contact` varchar(255) ชื่อผู้ติดต่อกรณีฉุกเฉิน (Optional)
+-   `regis_contactcall` varchar(255) หมายเลขโทรศัพท์ของผู้ติดต่อฉุกเฉิน (Optional)
+-   `regis_shield` varchar(3) มีสิทธิรับถ้วย `YES`,`NO`
+-   `regis_medal` varchar(3) มีสิทธิรับเหรียญรางวัล `YES`,`NO`
+-   `regis_donation` int(10) จำนวนเงินตามแพคเกจบริจาค 500 5,000 1,000,000 เท่านั้น
+-   `donate_value`int(6) จำนวนเงินที่บริจาคจริง คือ 500 5,000 1,000,000 และ เลขอื่นๆ
+-   `donate_alphabet` varchar(256) จำนวนเงินบริจาคจริงเป็นตัวอักษร
+-   `regis_size` varchar(6) ไซส์เสื้อ ss, s, m, l, xl, 2xl, 3xl
+-   `cloth_recieve` tinyint(1) สถานะการรับเสื้อ เป็น Boolean `1`รับแล้ว`0` ยังไม่รับ
+-   `input_user` varchar(255) ชื่อผู้กรอกข้อมูล/อัพเดทข้อมูลคนล่าสุด
+-   `created_at`timestamp `updated_at` timestamp วันที่เริ่มกรอกข้อมูล และ วันที่อัพเดทล่าสุด
+-   `regis_joining` varchar(45) เข้าร่วมหรือไม่ ใช้คำว่า `join` กับ `nojoin`
