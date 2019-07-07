@@ -3,7 +3,59 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-9">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header"> Status</div>
+                <div class="card-body">
+                    <h5>รายชื่อ และ จำนวนผู้สมัคร</h5>
+                    <div class="list-group list-group-flush">
+                        <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"><b>ผู้สมัครทั้งหมด</b> 
+                            <span class="badge badge-primary badge-pill">{{$all_number}} </span>
+                        </a>
+                        <a href="{{url('/home/view/specific/hundred')}}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">ประเภท 500 บาท
+                            <span class="badge badge-primary badge-pill">{{$hundred_number}}</span>
+                        </a>
+                        <a href="{{url('/home/view/specific/thousand')}}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">ประเภท 5,000 บาท
+                            <span class="badge badge-primary badge-pill">{{$thousand_number}}</span>
+                        </a>
+                        <a href="{{url('/home/view/specific/million')}}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">ประเภท 1,000,000 บาท
+                            <span class="badge badge-primary badge-pill">{{$million_number}}</span>
+                        </a>
+                        <a href="{{url('/home/pending/')}} " class="list-group-item list-group-item-action text-danger d-flex justify-content-between align-items-center"><b>ผู้ที่ยังไม่ชำระเงิน</b>
+                            <span class="badge badge-danger badge-pill">{{$pending_number}} </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="card">
+                <div class="card-header">Menu</div>
+                <div class="card-body">
+                <h5>ประเภทผู้สมัคร</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url('home/viewfromsite')}} ">ผู้สมัครผ่านเว็บไซต์</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url('/home/viewoffline/')}} ">ผู้สมัครออฟไลน์</a>
+                        </li>
+                    </ul>
+                    <h5>เมนูอื่น ๆ</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url('/home/search/')}}">ระบบค้นหา</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url('/home/size')}}">จำนวนคนต่อไซส์เสื้อ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__hPRVCdUQVQ4NDNKRkdFSjBGWUUwM0g1WUVaWksyRS4u">แจ้งปัญหาเว็บไซต์</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Dashboard</div>
                 
@@ -20,9 +72,7 @@
                         echo "<div class='alert alert-secondary acenter' role='alert'>You have Administrator Permission you can add user to the site <a href='register'> Add User </a> and <a href='home/manager'> Manage User </a> </div>";
                     }
                    ?>
-                    <div class="alert alert-info acenter" role="alert">
-                        Update Version 2.1.1  7/4/2019 เพิ่มระบบนับจำนวนเสื้อ
-                    </div>
+                   
                     <div class="row justify-content-around">
                         <div class="col-sm-6" >
                                 <a href="{{url('/home/register')}}" style="text-decoration:none;">
@@ -41,48 +91,6 @@
                         </div>
                     </div>
 
-                    <br>
-                    <div class="row justify-content-around">
-                            <div class="col-sm-3">
-                                    <a href="{{url('/home/view/specific/million')}}">
-                                        <button class="btn btn-outline-secondary kanit" style="margin:0.8em;width:190px;height:110px;">
-                                            <h5> <i class="fas fa-poll-h"></i> <br> ดูสถานะผู้สมัครสำหรับ 1,000,000 บาท</h5>
-                                        </button>
-                                    </a>
-
-                            </div>
-                            <div class="col-sm-3">
-                                    <a href="{{url('/home/view/specific/thousand')}}">
-                                        <button class="btn btn-outline-secondary kanit" style="margin:0.8em;width:190px;height:110px;">
-                                            <h5> <i class="fas fa-poll-h"></i> <br> ดูสถานะผู้สมัครสำหรับ 5,000 บาท</h5>
-                                        </button>
-                                    </a>
-                            </div>
-                            <div class="col-sm-3">
-                                    <a href="{{url('/home/view/specific/hundred')}}">
-                                        <button class="btn btn-outline-secondary kanit" style="margin:0.8em;width:190px;height:110px;">
-                                            <h5> <i class="fas fa-poll-h"></i> <br> ดูสถานะผู้สมัครสำหรับ 500 บาท</h5>
-                                        </button>
-                                    </a>
-                            </div>
-                    </div>
-                            <hr>
-                    <div class="row justify-content-around">
-                            <div class="col-sm-5">
-                                    <a href="{{url('/home/search/')}}">
-                                        <button class="btn btn-info kanit" style="margin:0.8em;height:50px;">
-                                            <h6><i class="fas fa-search"></i>  ค้นหาจากชื่อ หรือ เลขบัตรประชาชน</h6>
-                                        </button>
-                                    </a>
-                            </div> 
-                            <div class="col-sm-5">
-                                    <a href="{{url('/home/size')}}">
-                                        <button class="btn btn-warning kanit" style="margin:0.8em;height:50px;">
-                                            <h6><i class="fas fa-tshirt"></i>  จำนวนคนแต่ละ Size เสื้อ</h6>
-                                        </button>
-                                    </a>
-                            </div> 
-                    </div>
                     
             </div>
         </div>

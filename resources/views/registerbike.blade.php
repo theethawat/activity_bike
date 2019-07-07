@@ -62,13 +62,21 @@
                             </select>
                         </div>
                 </div>
+               
                 <div class="col-sm-4">
                     <label>วันเกิด(เดือน/วัน/ปี)*</label>
                     <div class="input-group mb-2 mr-sm-2">
+
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fas fa-calendar-alt"></i></div>
-                            </div>
-                            <input type="date" name="regis_date" required class="form-control ">
+                            </div> 
+                                
+                            <input type="date" id="datepicker" class="form-control"  name="regis_date" required > 
+                            <script>
+                            $( function() {
+                                $("#datepicker").datepicker();
+                             } );
+                             </script>
                         </div>
                     
                     
@@ -416,7 +424,7 @@
                 <option value="Sweden">Sweden</option>
                 <option value="Switzerland">Switzerland</option>
                 <option value="Syrian Arab Republic">Syrian Arab Republic</option>
-                <option value="Taiwan, Province of China">Taiwan, Province of China</option>
+                <option value="Taiwan">Taiwan, Republic of China</option>
                 <option value="Tajikistan">Tajikistan</option>
                 <option value="Tanzania, United Republic of">Tanzania, United Republic of</option>
                 <option selected value="Thailand">Thailand</option>

@@ -15,7 +15,7 @@ class ViewController extends Controller {
      * --------------------------
      */
     public function viewResult(){
-        $regisData = DB::table('bike_register')->orderBy('id','ASC')->get();
+        $regisData = DB::table('bike_register')->orderBy('regis_method','ASC')->orderBy('id','ASC')->get();
         return view('view')->with('data',$regisData)
         ->with('describe',NULL)->with('donate_money','all');
     }
@@ -94,6 +94,14 @@ class ViewController extends Controller {
             $regisData = DB::table('bike_register')->orderBy('id','ASC')->get();
             $describe ="สำหรับทุกจำนวนเงินบริจาค";
         }
+        if($donate == "website"){
+            $regisData = DB::table('bike_register')->where('regis_method','!=','Offline')->orderBy('id','ASC')->get();
+            $describe ="สำหรับทุกจำนวนเงินบริจาคในการสมัครผ่านเว็บไซต์ ThaiMTB.com ";
+        }
+        if($donate == "offline"){
+            $regisData = DB::table('bike_register')->where('regis_method','Offline')->orderBy('id','ASC')->get();
+            $describe ="สำหรับทุกจำนวนเงินบริจาคในการสมัครผ่านระบบภายในของเขื่อนวชิราลงกรณ ";
+        }
         return view('transaction')->with('data',$regisData)->with('describe',$describe);
     }
 
@@ -128,5 +136,28 @@ class ViewController extends Controller {
         ->with('xl',$size_xl)
         ->with('xl2',$size_2xl)
         ->with('xl3',$size_3xl);
+    }
+
+    public function viewFromWeb(){
+        $regisData = DB::table('bike_register')->where('regis_method','!=','Offline')->get();
+        $describe ="ข้อมูลที่ป้อนเข้าผ่านทางเว็บไซต์ ThaiMTB.com";
+        return view('view')
+        ->with('data',$regisData)
+        ->with('donate_money','website')->with('describe',$describe);
+    }
+    public function viewPending(){
+        $regisData = DB::table('bike_register')->where('regis_status','pending')->orderBy('id','ASC')->get();
+        $describe ="ผู้สมัครที่ยังไม่ได้ชำระเงิน";
+        return view('view')
+        ->with('data',$regisData)
+        ->with('donate_money',NULL)->with('describe',$describe);
+    }
+
+    public function viewOffline(){
+        $regisData = DB::table('bike_register')->where('regis_method','Offline')->get();
+        $describe ="ข้อมูลที่ป้อนเข้าผ่านระบบภายในของเขื่อนวชิราลงกรณ";
+        return view('view')
+        ->with('data',$regisData)
+        ->with('donate_money','offline')->with('describe',$describe);
     }
 }

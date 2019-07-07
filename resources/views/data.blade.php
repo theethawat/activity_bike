@@ -14,15 +14,24 @@
         <h3>
         <?php
                 if($data->bib_id != NULL){
-                        if ($data -> regis_donation == "1000000") {
-                            printf("SC%04d",$data->bib_id);
-                        }
-                        if ($data -> regis_donation == "5000") {
-                            printf("VC%04d",$data->bib_id);
-                        }
-                        if ($data -> regis_donation == "500") {
-                            printf("GC%04d",$data->bib_id);
-                        }
+                    if ($data -> regis_donation == "1000000" && $data->regis_method == "Offline") {
+                        printf("SC%04d",$data->bib_id);
+                       }
+                       if ($data -> regis_donation == "5000" && $data->regis_method == "Offline") {
+                       printf("VC%04d",$data->bib_id);
+                       }
+                       if ($data -> regis_donation == "500" && $data->regis_method == "Offline") {
+                       printf("GC%04d",$data->bib_id);
+                       }
+                       if ($data -> regis_donation == "1000000" && $data->regis_method != "Offline") {
+                           printf("SW%04d",$data->bib_id);
+                          }
+                          if ($data -> regis_donation == "5000" && $data->regis_method != "Offline") {
+                          printf("VW%04d",$data->bib_id);
+                          }
+                          if ($data -> regis_donation == "500" && $data->regis_method != "Offline") {
+                          printf("GW%04d",$data->bib_id);
+                          }
                     }
                 else {
                     print ("Not Issued");

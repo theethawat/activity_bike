@@ -7,12 +7,12 @@
 
 
     <div >
-            <h3 class="kanit"><i class="fas fa-user-friends"></i> รายชื่อผู้สมัครเข้าร่วมกิจกรรม 
+            <h3 class="kanit acenter"><i class="fas fa-user-friends"></i> รายชื่อผู้สมัครเข้าร่วมกิจกรรม 
             <?php if($donate_money != NULL): ?>
                 <a href="{{url('/home/transaction/'.$donate_money)}} "> <button class="btn btn-primary"><i class="fas fa-print"></i> พิมพ์</button> </a>
             <?php endif;?>
             </h3>
-            <h5>
+            <h5 class="kanit acenter">
                 <?php
                 if($describe != NULL)
                 {
@@ -22,7 +22,7 @@
             </h5>
             <div class="table-responsive">
             <table class="table table-hover table-striped">
-                <thead class="kanit acenter">
+                <thead class="kanit acenter ">
                     <tr>
                         <th scope="col">No.</th>
                         <th scope="col">BIB</th>
@@ -47,38 +47,69 @@
 
                 <?php
                 $count = 0;
+				$allmoney = 0;
                 ?>
 
                 @foreach ($data as $datalist)
-
+					
                      <tr>
                         <td scope="col"><?php $count++;?> {{$count}} </td>
                         <td scope="col">
                        <?php
                         if($datalist->bib_id != NULL){
-                             if ($datalist -> regis_donation == "1000000") {
-                             printf("SC%04d",$datalist->bib_id);
+                            //Offline Bib Generator
+                             if ($datalist -> regis_donation == "1000000" && $datalist->regis_method == "Offline") {
+                             printf("SC%04d",$datalist->bib_id); 
+                             print("<br><span class='badge badge-success kanit piccenter'><i class='fas fa-trophy'></i> <h6>VIP</h6></span>");
                             }
-                            if ($datalist -> regis_donation == "5000") {
+                            if ($datalist -> regis_donation == "5000" && $datalist->regis_method == "Offline") {
                             printf("VC%04d",$datalist->bib_id);
+                            print("<br><span class='badge badge-warning kanit piccenter'><i class='fas fa-trophy'></i> <h6>VIP</h6></span>");
                             }
-                            if ($datalist -> regis_donation == "500") {
+                            if ($datalist -> regis_donation == "500" && $datalist->regis_method == "Offline") {
                             printf("GC%04d",$datalist->bib_id);
+                           
                             }
+                            //From ThaiMTB Bib Generator
+                            if ($datalist -> regis_donation == "1000000" && $datalist->regis_method != "Offline") {
+                                printf("SW%04d",$datalist->bib_id); 
+                                print("<br><span class='badge badge-success kanit piccenter'><i class='fas fa-trophy'></i> <h6>VIP</h6></span>");
+                               }
+                               if ($datalist -> regis_donation == "5000" && $datalist->regis_method != "Offline") {
+                               printf("VW%04d",$datalist->bib_id);
+                               print("<br><span class='badge badge-warning kanit piccenter'><i class='fas fa-trophy'></i> <h6>VIP</h6></span>");
+                               }
+                               if ($datalist -> regis_donation == "500" && $datalist->regis_method != "Offline") {
+                               printf("GW%04d",$datalist->bib_id);
+                              
+                               }
+							
+							$allmoney += $datalist->donate_value;
                         }
                         else {
                             print ("Not Now");
+                            if ($datalist -> regis_donation == "5000"){
+                                print("<br><span class='badge badge-warning kanit piccenter'><i class='fas fa-trophy'></i> <h6>VIP</h6></span>");
+                            }
+                            if ($datalist -> regis_donation == "1000000"){
+                                print("<br><span class='badge badge-success kanit piccenter'><i class='fas fa-trophy'></i> <h6>VIP</h6></span>");
+                            }
+                                
                         }
                         ?>
                         </td>
                         <td scope="col "><?php
+                            
                             $status = $datalist->regis_status;
                             if($status == "pending")
                                 print("<span class='badge badge-danger kanit piccenter'><i class='fas fa-ban'></i> <h6>รอชำระ</h6></span>");
                             if($status == "success"){
                                 print("<span class='badge badge-success kanit piccenter'><h6> <i class='fas fa-check-circle'></i> ชำระเรียบร้อย</h6></span>");
                             }
-                            
+                            $method = $datalist->regis_method;
+                            if($method != "Offline"){
+                                print("<span class='badge badge-primary kanit piccenter'><h6> <i class='fas fa-globe-asia'></i> Online Reg.</h6></span>");
+                            }
                             if($datalist->cloth_recieve == true)
                                 print("<span class='badge badge-warning kanit piccenter'><h6><i class='fas fa-check-circle'></i> รับเสื้อแล้ว</h6></span>");
                             if($datalist->cloth_recieve == false)
@@ -86,7 +117,7 @@
 							if($datalist->regis_joining == "join")
                                 print("<span class='badge badge-light kanit piccenter'><h6><i class='fas fa-biking'></i> ร่วมปั่น</h6></span>");
                             if($datalist->regis_joining == "nojoin")
-                                print("<span class='badge badge-light kanit piccenter'><h6><i class='fas fa-biking'></i> ไม่ได้ร่วมปั่น</h6></span>");
+                                print("<span class='badge badge-light kanit piccenter'><h6 class='text-danger'><i class='fas fa-biking'></i> ไม่ได้ร่วมปั่น</h6></span>");
                                 
                         ?> 
                            
@@ -127,9 +158,11 @@
                     </tr>
 
                 @endforeach
-                </tbody>
+	
+                </tbody>	
             </table>
         </div>
+		<h4 style ="text-align:right; padding-right:1em;">จำนวนเงินทั้งหมด  {{number_format($allmoney)}}  บาท </h4>
     </div>
 
 

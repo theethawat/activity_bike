@@ -74,6 +74,7 @@
 
                 <?php
                 $count = 0;
+				$allmoney = 0;
                 ?>
 
                 @foreach ($data as $datalist)
@@ -83,15 +84,25 @@
                         <td scope="col">
                        <?php
                         if($datalist->bib_id != NULL){
-                             if ($datalist -> regis_donation == "1000000") {
+                             if ($datalist -> regis_donation == "1000000" && $datalist->regis_method == "Offline") {
                              printf("SC%04d",$datalist->bib_id);
                             }
-                            if ($datalist -> regis_donation == "5000") {
+                            if ($datalist -> regis_donation == "5000" && $datalist->regis_method == "Offline") {
                             printf("VC%04d",$datalist->bib_id);
                             }
-                            if ($datalist -> regis_donation == "500") {
+                            if ($datalist -> regis_donation == "500" && $datalist->regis_method == "Offline") {
                             printf("GC%04d",$datalist->bib_id);
                             }
+                            if ($datalist -> regis_donation == "1000000" && $datalist->regis_method != "Offline") {
+                                printf("SW%04d",$datalist->bib_id);
+                               }
+                               if ($datalist -> regis_donation == "5000" && $datalist->regis_method != "Offline") {
+                               printf("VW%04d",$datalist->bib_id);
+                               }
+                               if ($datalist -> regis_donation == "500" && $datalist->regis_method != "Offline") {
+                               printf("GW%04d",$datalist->bib_id);
+                               }
+							$allmoney += $datalist->donate_value;
                         }
                         else {
                             print ("Not Now");
@@ -182,9 +193,27 @@
                     </tr>
 
                 @endforeach
+				 <tr>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col">รวมยอดเงินบริจาคทั้งหมด</th>
+
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"> </th>
+						<th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"> </th>
+                       <th scope="col"></th>
+                        
+                        <th scope="col">{{number_format($allmoney)}}</th>
+                        <th scope="col"> บาท </th>
+                       
+                    </tr>
                 </tbody>
             </table>
-            
+            <h4 style ="text-align:right;">   </h4>
             
             
     </div>
