@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>10.28 กรกฎาคม BIKE @ เขื่อนวชิราลงกรณ</title>
-  
+    <link rel="icon" href="{{asset('bicycle.png')}} ">
    
      
 	<script
@@ -19,7 +19,7 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.min.css')}} " rel="stylesheet" >
     <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet"> 
 
      <!-- Scripts -->
@@ -101,11 +101,18 @@
             @yield('content')
         </main>
 		<br>
-		<footer class=" acenter"><span class="kanit">ดูแลระบบโดยกลุ่มงานดิจิทัล เขื่อนวชิราลงกรณ (ดท-ขว. อขว.) </span><br> กรณีระบบมีปัญหาสามารถ แจ้งการใช้งานขัดข้องสำหรับงานนี้ <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__hPRVCdUQVQ4NDNKRkdFSjBGWUUwM0g1WUVaWksyRS4u">คลิก</a> หรือทางโทรศัพท์ภายในองค์กร V 2.1.1</footer>
+        
+        <div class="container">
+            <hr>
+		    <footer class=" acenter">
+            <span class="kanit">ดูแลระบบโดยกลุ่มงานดิจิทัล เขื่อนวชิราลงกรณ (ดท-ขว. อขว.) </span>
+            <br> กรณีระบบมีปัญหาสามารถ แจ้งการใช้งานขัดข้องสำหรับงานนี้ <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__hPRVCdUQVQ4NDNKRkdFSjBGWUUwM0g1WUVaWksyRS4u">คลิก</a> หรือทางโทรศัพท์ภายในองค์กร V 3.1.1</footer>
+            <div class="acenter">Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"                 title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+       </div>
         <br>
     </div>
     <!--Javascript-->
 
-    <script src="https://kit.fontawesome.com/942c2b45e2.js"></script>
+    <script src="{{asset('/fontawesome/js/all.js')}}"></script>
 </body>
 </html>

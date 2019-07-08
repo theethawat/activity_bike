@@ -41,7 +41,7 @@ Route::get('home/delete/{id}','EditController@deleteRecord');
  * Printing
  */
 Route::get('home/print/{id}','ViewController@printRecipt');
-
+Route::get('/home/printinfo/','HomeController@printInfo');
 /**
  * 
  *Searching
@@ -58,3 +58,4 @@ Route::get('/home/size','ViewController@sizeCounter');
 Route::get('home/viewfromsite','ViewController@viewFromWeb');
 Route::get('/home/pending/','ViewController@viewPending');
 Route::get('/home/viewoffline/','ViewController@viewOffline');
+

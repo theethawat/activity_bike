@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>รายการข้อมูล</title>
-    <script src="https://kit.fontawesome.com/942c2b45e2.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Sarabun&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>รายการชื่อผู้สมัครเข้าร่วมงาน 10.28 กรกฎาคม BIKE @ เขื่อนวชิราลงกรณ</title>
+    <script src="{{asset('/fontawesome/js/all.js')}}"></script>
+    <link href="https://fonts.googleapis.com/css?family=Sarabun:300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.min.css')}} " rel="stylesheet" >
     <style>
     body{
         font-family:'Sarabun',sans-serif;
@@ -26,7 +26,7 @@
     }
     </style>
     <style media="print">
-    @page {size:landscape}
+    @page {size:portrait}
     body{
         font-family:'Sarabun',sans-serif;
         font-size:14px;
@@ -55,7 +55,7 @@
 
                         <th scope="col">ไซส์เสื้อ</th>
                         <th scope="col">เพศ</th>
-                        <th scope="col">หมายเลขบัตรประชาชน</th>
+                        <!-- <th scope="col">หมายเลขบัตรประชาชน</th> -->
                         <th scope="col">เบอร์โทรศัพท์</th>
    
                         <th scope="col">ทีม</th>
@@ -67,7 +67,7 @@
                         <th scope="col">รับเหรียญ</th> -->
                         <th scope="col">ประเภท</th>
                         <th scope="col">เงินบริจาค (บาท)</th>
-                       
+                        <th scope="col">ช่องทางการสมัคร</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -119,7 +119,7 @@
                             echo date_format($birthday,"d/m/Y");
                             ?>
                             </td> -->
-                        <td scope="col">{{ $datalist -> regis_peopleid}}</td>
+                        <!-- <td scope="col">{{ $datalist -> regis_peopleid}}</td> -->
                         <td scope="col">{{ $datalist -> regis_call}}</td>
 
                         <td scope="col">{{ $datalist -> regis_team}}</td>
@@ -188,8 +188,13 @@
                             } 
                             ?></td>
                         <td scope="col">{{ number_format($datalist->donate_value)}} </td>
-                        
-    
+                        <td scope="col"><?php
+                            if($datalist->regis_method == "Offline")
+                                echo "การเงินฯ";
+                            else
+                                echo "ThaiMTB";
+                        ?> </td> 
+                            
                     </tr>
 
                 @endforeach
@@ -213,8 +218,9 @@
                     </tr>
                 </tbody>
             </table>
-            <h4 style ="text-align:right;">   </h4>
+           
             
+             <br>
             
     </div>
       
