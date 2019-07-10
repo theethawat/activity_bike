@@ -54,6 +54,9 @@
                             <a class="nav-link" href="{{url('/home/printinfo')}}">พิมพ์หน้าข้อมูล</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{url('/home/printtofill')}}">พิมพ์หน้าข้อมูลสำหรับคีย์ลง ThaiMTB.com</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__hPRVCdUQVQ4NDNKRkdFSjBGWUUwM0g1WUVaWksyRS4u">แจ้งปัญหาเว็บไซต์</a>
                         </li>
                     </ul>

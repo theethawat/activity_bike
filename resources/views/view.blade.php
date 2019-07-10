@@ -14,10 +14,11 @@
             </h3>
             <h5 class="kanit acenter">
                 <?php
-                if($describe != NULL)
-                {
+                if($describe != NULL): 
                     echo $describe;
-                }
+                else:
+                    echo " <a href='view/reverse'> <button class='btn btn-success'><i class='fas fa-reply-all'></i> ดูจากผู้ลงทะเบียนคนสุดท้ายก่อน</button> </a>";
+                endif;
                 ?>
             </h5>
             <div class="table-responsive">
@@ -34,11 +35,12 @@
                         <th scope="col">เพศ</th>
                         <th scope="col">ID/Passport</th>
                         <th scope="col">เบอร์โทรศัพท์</th>
-                        <th scope="col">ทีม</th>
-                        <th scope="col">รับโล่</th>
-                        <th scope="col">รับเหรียญ</th>
-                        <th scope="col">เงินบริจาค</th>
+                       
+                        <th scope="col">เงินบริจาค</th> 
+                        <th scope="col">ได้รับเหรียญ</th>
                         <th scope="col">แก้ไข หรือ ลบ</th>
+                         <th scope="col">ทีม</th>
+                       
                         <th scope="col">แก้ไขล่าสุดโดย</th>
                         <th scope="col">อัพเดทเมื่อ</th>
                     </tr>
@@ -136,12 +138,14 @@
                         <td scope="col">{{ $datalist -> regis_peopleid}}</td>
                         <td scope="col">{{ $datalist -> regis_call}}</td>
                      
-                        <td scope="col">{{ $datalist -> regis_team}}</td>
-   
-                        <td scope="col">{{ $datalist -> regis_shield}}</td>
-                        <td scope="col">{{ $datalist -> regis_medal}}</td>
+                     
                         <td scope="col">{{$datalist -> regis_donation}} / {{ $datalist -> donate_value}}</td>
-                        
+                         <td scope="col"><?php 
+                         if($datalist -> medal_recieve == true)
+                            print("<i class='fas fa-check'></i>"); 
+                         else
+                            print("<i class='fas fa-times'></i>");
+                            ?> </td>
                         <td scope="col">
                             <div class="d-flex flex-row justify-content-center kanit">
                                 <a href={{url('/home/edit/'.$datalist->id)}} ><button style="width:60px; margin-right:0.3em;" class="btn btn-warning"> <i class="fas fa-user-edit"></i> <br> แก้ไข </button> </a>
@@ -152,7 +156,11 @@
                                 <?php endif; ?>
                                 <a href={{url('/home/detail/'.$datalist->id)}} target="_blank" ><button style="width:60px; margin-right:0.3em;" class="btn btn-info"><i class="fas fa-info-circle"></i><br> ข้อมูล</button> </a>
                             </div>
-                        </td>
+                        </td>   
+                        <td scope="col">{{ $datalist -> regis_team}}</td>
+   
+                    
+                       
                         <td scope="col">{{ $datalist -> input_user}}</td>
                         <td scope="col">{{ $datalist -> updated_at}}</td>
                     </tr>

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.min.css')}} " rel="stylesheet" >
     <style>
     body{
-        font-family:'Sarabun',sans-serif;
+        /* font-family:'Sarabun',sans-serif; */
         font-size:14px;
     }
     .acenter{
@@ -26,9 +26,9 @@
     }
     </style>
     <style media="print">
-    @page {size:portrait}
+    @page {size:landscape}
     body{
-        font-family:'Sarabun',sans-serif;
+        /* font-family:'Sarabun',sans-serif; */
         font-size:14px;
         width:100%;
         }
@@ -39,6 +39,7 @@
             <br>
             <h6 class="acenter"><strong>รายชื่อ และ รายละเอียดผู้สมัครเข้าร่วมโครงการ 10.28 กรกฎาคม BIKE @ เขื่อนวชิราลงกรณ</strong> </h6>
             <h6 class="acenter"> {{$describe}} ข้อมูล ณ วันที่  <?php
+            
                 $date = date("d/m/");
                 $year = date("Y");
                 $year = $year + 543;
@@ -54,20 +55,19 @@
                         <th scope="col">ชื่อ-นามสกุล</th>
 
                         <th scope="col">ไซส์เสื้อ</th>
-                        <th scope="col">เพศ</th>
-                        <!-- <th scope="col">หมายเลขบัตรประชาชน</th> -->
+                        <th scope="col">วันเกิด</th>
+                        <th scope="col">หมายเลขบัตรประชาชน</th> 
                         <th scope="col">เบอร์โทรศัพท์</th>
-   
-                        <th scope="col">ทีม</th>
-
+                        <th scope="col">ที่อยู่</th> 
                         <th scope="col">ชำระเงิน</th>
-                        <th scope="col">รับเสื้อ</th>
+                        
+
+                        
+                        
                         <th scope="col">ร่วมปั่น</th>
-                        <!-- <th scope="col">รับโล่</th>-->
-                        <th scope="col">สถานะการรับเหรียญ</th> 
                         <th scope="col">ประเภท</th>
                         <th scope="col">เงินบริจาค (บาท)</th>
-                        <th scope="col">ช่องทางการสมัคร</th>
+                        <!-- <th scope="col">ช่องทางการสมัคร</th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -112,17 +112,20 @@
                         
                         <td scope="col">{{ $datalist -> regis_prefix}}{{ $datalist -> regis_name}}  {{ $datalist -> regis_surname}}</td>
                         <td scope="col">{{ $datalist -> regis_size}}</td>
-                        <td scope="col">{{ $datalist -> regis_sex}}</td>
-                        <!-- <td scope="col">
+                    
+                         <td scope="col">
                             <?php
                             $birthday = date_create($datalist -> regis_date);
-                            echo date_format($birthday,"d/m/Y");
+                            $date_bd = date_format($birthday,"d/m/");
+                            $year_bd = date_format($birthday,"Y");
+                            $year_bd = $year_bd + 543;
+                            echo $date_bd . $year_bd;
                             ?>
-                            </td> -->
-                        <!-- <td scope="col">{{ $datalist -> regis_peopleid}}</td> -->
+                            </td> 
+                        <td scope="col">{{ $datalist -> regis_peopleid}}</td>
                         <td scope="col">{{ $datalist -> regis_call}}</td>
-
-                        <td scope="col">{{ $datalist -> regis_team}}</td>
+                        <td scope="col">{{ $datalist -> regis_address}}</td>
+                      
                         <!--ชำระเงิน-->
                         <td scope="col"><?php
                             $status = $datalist->regis_status;
@@ -133,16 +136,7 @@
                                 ?>
                         </td>
                       
-                        <!--รับเสื้อ-->
-                        <td scope="col">
-                        <?php
-                            if($datalist->cloth_recieve == true)
-                                    print("<i class='fas fa-check'></i>");
-                                if($datalist->cloth_recieve == false)
-                                    print("<i class='fas fa-times'></i>");
-                        ?>
-                        
-                        </td>
+                 
                         <!--เข้าร่วมการปั่นจักรยาน-->
                         <td scope="col">
                                 <?php
@@ -165,16 +159,16 @@
                                 
                                 ?> 
                         </td> -->
-                         <td scope="col">
+                        <!-- <td scope="col">
                         <?php
                         
-                        if($datalist->medal_recieve == false)
-                        print("<i class='fas fa-times'></i>");
-                        else
-                        print("<i class='fas fa-check'></i>");
+                        // if($datalist->regis_medal == "YES")
+                        // print("<i class='fas fa-times'></i>");
+                        // else
+                        // print("<i class='fas fa-check'></i>");
                         
                         ?> 
-                        </td> 
+                        </td> -->
                         <td scope="col">
                         <?php 
                         if ($datalist -> regis_donation == "1000000") {
@@ -188,12 +182,12 @@
                             } 
                             ?></td>
                         <td scope="col">{{ number_format($datalist->donate_value)}} </td>
-                        <td scope="col"><?php
-                            if($datalist->regis_method == "Offline")
-                                echo "ภายในฯ";
-                            else
-                                echo "ThaiMTB";
-                        ?> </td> 
+                        <!-- <td scope="col"><?php
+                            // if($datalist->regis_method == "Offline")
+                            //     echo "ภายในฯ";
+                            // else
+                            //     echo "ThaiMTB";
+                        ?> </td>  -->
                             
                     </tr>
 
@@ -224,10 +218,6 @@
             
     </div>
       
-    <script>
-    setTimeout(function(){
-        window.print()
-    }, 3000);
-    </script>
+   
 </body>
 </html>

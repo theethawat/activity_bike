@@ -26,12 +26,22 @@
             $cloth = $data->cloth_recieve;
             $cloth == true ? $recieved = "selected" : $recieved="";
             $cloth == false ? $nonrecieved = "selected" : $nonrecieved="";
+
+            $medal = $data->medal_recieve;
+            $medal == true ? $recieved_md = "selected" : $recieved_md="";
+            $medal == false ? $nonrecieved_md = "selected" : $nonrecieved_md="";
     ?>    
 
     <label>สถานะการรับเสื้อ  </label>
         <select class="form-control col-sm-3" name="regis_cloth" required>
                      <option value="1" {{$recieved}}>รับเสื้อแล้ว</option>
                      <option value="0" {{$nonrecieved}}>ยังไม่รับเสื้อ</option>
+        </select>
+    <br>
+    <label>สถานะการรับเหรียญ </label>
+        <select class="form-control col-sm-3" name="regis_medal_recieve" required>
+                     <option value="1" {{$recieved_md}}>รับเหรียญแล้ว</option>
+                     <option value="0" {{$nonrecieved_md}}>ยังไม่รับเหรียญ</option>
         </select>
     <label>คำนำหน้าชื่อ</label>
     <!--For Displaying the default value from database-->

@@ -49,6 +49,7 @@ class RegisterController extends BibController {
         $money_numberic = $request->input('money_numberic');
         $money_alphabet = $request->input('money_alphabet'); 
         $regis_cloth = $request->input('regis_cloth'); 
+        $regis_medal_recieve = $request->input('regis_medal_recieve'); 
 
         //Generate BIB (ID for Biking) or not, Generate only success payment
         if($regis_status == "success"){
@@ -113,10 +114,11 @@ class RegisterController extends BibController {
             'donate_value' => $donation_numberic,
             'donate_alphabet' => $donation_alphabet,
             'cloth_recieve'=>$regis_cloth,
-			  'regis_joining'=>$regis_joining
+              'regis_joining'=>$regis_joining,
+              'medal_recieve'=>$regis_medal_recieve
             ]
         );
-        return Redirect::to('/home/view');
+        return Redirect::to('/home/view/reverse');
     }
 
     

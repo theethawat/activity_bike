@@ -28,6 +28,7 @@ Route::post('/home/confirmreg','RegisterController@confirmRegister');
  * in file App/Http/Controllers
  */
 Route::get('/home/view','ViewController@viewResult');
+Route::get('/home/view/reverse','ViewController@viewResultReverse');
 Route::get('home/view/specific/{money}','ViewController@viewSpecific');
 Route::get('home/detail/{id}','ViewController@printDetail');
 /**
@@ -42,6 +43,7 @@ Route::get('home/delete/{id}','EditController@deleteRecord');
  */
 Route::get('home/print/{id}','ViewController@printRecipt');
 Route::get('/home/printinfo/','HomeController@printInfo');
+Route::get('/home/printtofill/','ViewController@printToFill');
 /**
  * 
  *Searching

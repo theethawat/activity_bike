@@ -55,7 +55,8 @@ class EditController extends BibController {
         $money_alphabet = $request->input('money_alphabet');  
         $regis_cloth = $request->input('regis_cloth'); 
         $regis_joining = $request->input('regis_joining'); 
-		
+        $regis_medal_recieve = $request->input('regis_medal_recieve'); 
+
 		if($money_numberic != $regis_donation){
 			if($money_numberic <= 4999)
 				$regis_donation = 500;
@@ -95,7 +96,8 @@ class EditController extends BibController {
                 'donate_value'=>$money_numberic,
                 'donate_alphabet'=>$money_alphabet,
                 'cloth_recieve'=>$regis_cloth,
-				'regis_joining'=>$regis_joining
+                'regis_joining'=>$regis_joining,
+                'medal_recieve'=>$regis_medal_recieve
                 ]
         );
         }
@@ -130,11 +132,12 @@ class EditController extends BibController {
                 'donate_value'=>$money_numberic,
                 'donate_alphabet'=>$money_alphabet,
                 'cloth_recieve'=>$regis_cloth,
-				'regis_joining'=>$regis_joining
+                'regis_joining'=>$regis_joining,
+                'medal_recieve'=>$regis_medal_recieve
                 ]
         );
         }
-        return Redirect::to('/home/view');
+        return Redirect::to('/home/view/reverse');
     }
 
    /* -------------------------------

@@ -19,6 +19,11 @@ class ViewController extends Controller {
         return view('view')->with('data',$regisData)
         ->with('describe',NULL)->with('donate_money','all');
     }
+    public function viewResultReverse(){
+        $regisData = DB::table('bike_register')->orderBy('regis_method','ASC')->orderBy('id','DESC')->get();
+        return view('view')->with('data',$regisData)
+        ->with('describe','แสดงข้อมูลเริ่มจากผู้สมัครคนล่าสุด')->with('donate_money','all');
+    }
 
     public function viewSpecific($money){
         //Data Fetching From Database
@@ -105,6 +110,11 @@ class ViewController extends Controller {
         return view('transaction')->with('data',$regisData)->with('describe',$describe);
     }
 
+    public function printToFill(){
+        $regisData = DB::table('bike_register')->where('regis_method','Offline')->orderBy('id','ASC')->get();
+        $describe ="สำหรับทุกจำนวนเงินบริจาคในการสมัครผ่านระบบภายในของเขื่อนวชิราลงกรณ (ดีไซด์สำหรับกรอกข้อมูล)";
+        return view('printforfill')->with('data',$regisData)->with('describe',$describe);
+    }
     public function sizeCounter(){
         $databaseQuery = DB::table('bike_register')->orderBy('id','ASC')->get();
         $size_ss = 0;

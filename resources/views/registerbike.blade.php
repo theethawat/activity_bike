@@ -580,6 +580,13 @@
                    
             </select>
             <br>
+            <label>รับเหรียญแล้ว*</label>
+            <select class="form-control col-sm-3" name="regis_medal_recieve" required>
+                     <option value="0" selected>ยังไม่รับเหรียญ </option>
+                     <option value="1">รับเหรียญแล้ว</option>
+                   
+            </select>
+            <br>
             <label>สถานะการรับเสื้อ ณ เวลาที่สมัคร *</label>
             <select class="form-control col-sm-3" name="regis_cloth" required>
                      <option value="1">รับเสื้อแล้ว</option>
