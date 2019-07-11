@@ -27,6 +27,8 @@
                 <option value="ด.ช.">ด.ช.</option>
                 <option value="ด.ญ.">ด.ญ.</option>
             </select>
+            <small>สำหรับเพศจะระบุให้อัตโนมัติจากคำนำหน้าชื่อที่บอกไว้ กรณีเป็นยศอื่น ๆ กรุณาเลือกตามเพศสภาพ และใส่ยศไว้หน้าชื่อของท่าน</small>
+            <br>
             <div class="row">
                 <div class="col-sm-6">
                     <label>ชื่อ*</label>
@@ -48,9 +50,31 @@
                         </div>
                 </div>
             </div>
+            <br> 
+            <div class="card bg-light col-sm-6">
+                <div class="card-body"> 
+                <script>
+                        $(document).ready(function(){
+                            $("#buddist").change(function(){
+                                $("#christ").html(function(){
+                                    var bc = document.getElementById("buddist").value;
+                                    console.log(bc);
+                                    return bc-543;
+                                });
+                            });
+                        });
+                    </script>
+                    <h5>เครื่องช่วยคำนวนการแปลงปี พ.ศ.เป็น ค.ศ. </h5>
+                    <label>ใส่เลขปี พ.ศ. (Optional)</label>
+                    <input  class="form-control col-sm-6"  type="number" value="2501"  id="buddist" >
+                    <p >ปี ค.ศ. <span id="christ">1958</span> </p>
+                    <small>ถ้าใส่โดยการพิมพ์ แล้วยังไม่เห็นผล พิมพ์เสร็จให้กด Enter หรือคลิกที่อื่นใดก็ได้ เพื่อให้ผลเปลี่ยนแปลง</small>
+                   
+                </div>
+            </div>
             <br>
             <div class="row">
-                <div class="col-sm-4">
+                <!-- <div class="col-sm-4">
                     <label>เพศ*</label>
                     <div class="input-group mb-2 mr-sm-2">
                             <div class="input-group-prepend">
@@ -61,7 +85,7 @@
                                 <option value="หญิง">หญิง</option>
                             </select>
                         </div>
-                </div>
+                </div> -->
                
                 <div class="col-sm-4">
                     <label>วันเกิด(เดือน/วัน/ปี)*</label>
@@ -95,18 +119,18 @@
             <br>
             <div class="row">
                 <div class="col-sm-6">
-                    <label>หมายเลขบัตรประชาชน หรือ หมายเลขหนังสือเดินทาง*</label>
+                    <label>หมายเลขบัตรประชาชน หรือ หมายเลขหนังสือเดินทาง (Optional) </label>
                     <div class="input-group mb-2 mr-sm-2">
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fas fa-id-card"></i></div>
                             </div>
-                            <input type="text" name="regis_peopleid" required class="form-control ">
+                            <input type="text" name="regis_peopleid" class="form-control ">
                         </div>
                     
                 </div>
                 
                 <div class="col-sm-6">
-                    <label>อีเมล </label>
+                    <label>อีเมล (Optional) </label>
                     <div class="input-group mb-2 mr-sm-2">
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="far fa-envelope"></i></div>
@@ -123,8 +147,8 @@
         ----------------------------------------------
     -->
     <h4>ที่อยู่</h4>
-    <label>ที่อยู่*</label>
-    <textarea  name="regis_address"  class="form-control" rows="3" required></textarea>
+    <label>ที่อยู่ (Optional)</label>
+    <textarea  name="regis_address"  class="form-control" rows="3" required> - </textarea>
      <label>จังหวัด*</label>
 
     <select name="regis_province" class="form-control">
@@ -208,7 +232,7 @@
       <option value="อ่างทอง">อ่างทอง </option>
 </select>
      <label>สัญชาติ*</label>
-    <input type="text" name="regis_nationality" required class="form-control">
+    <input type="text" name="regis_nationality" required class="form-control" value="ไทย">
 
     <label>ประเทศ*</label>
     <select  name="regis_country" class="form-control">

@@ -1,0 +1,14 @@
+@font-face {
+    font-family: "Kanit";
+    src: url("fonts/Kanit/Kanit-Regular.ttf");
+    src: url("fonts/Kanit/Kanit-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Sarabun";
+    src: url("fonts/Sarabun/Sarabun-Light.ttf");
+    src: url("fonts/Sarabun/Sarabun-Light.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}

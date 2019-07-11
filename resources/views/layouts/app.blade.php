@@ -11,11 +11,8 @@
     <link rel="icon" href="{{asset('bicycle.png')}} ">
    
      
-	<script
-    src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-    crossorigin="anonymous"></script>
-    
+	<script src="{{asset('js/jquery-3.4.1.js')}} "></script>
+    <script src="{{asset('js/Chart.min.js')}} "></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -106,7 +103,7 @@
             <hr>
 		    <footer class=" acenter">
             <span class="kanit">ดูแลระบบโดยกลุ่มงานดิจิทัล เขื่อนวชิราลงกรณ (ดท-ขว. อขว.) </span>
-            <br> กรณีระบบมีปัญหาสามารถ แจ้งการใช้งานขัดข้องสำหรับงานนี้ <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__hPRVCdUQVQ4NDNKRkdFSjBGWUUwM0g1WUVaWksyRS4u">คลิก</a> หรือทางโทรศัพท์ภายในองค์กร V 3.1.1</footer>
+            <br> กรณีระบบมีปัญหาสามารถ แจ้งการใช้งานขัดข้องได้ทางโทรศัพท์ภายในองค์กร โทร 2040 V 3.1.3 |  11 July 2019</footer>
             <div class="acenter">Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"                 title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
        </div>
         <br>

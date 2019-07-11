@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ข้อมูลการสมัครเข้าร่วมงาน 10.28 กรกฎาคม BIKE @ เขื่อนวชิราลงกรณ</title>
     <script src="{{asset('/fontawesome/js/all.js')}}"></script>
-    <link href="https://fonts.googleapis.com/css?family=Sarabun:300&display=swap" rel="stylesheet">
+  
     <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.min.css')}} " rel="stylesheet" >
     <style>
     body{
-        font-family:'Sarabun',sans-serif;
+        /* font-family:'Sarabun',sans-serif; */
         font-size:14px;
     }
     .acenter{
@@ -28,7 +28,7 @@
     <style media="print">
     @page {size:portrait}
     body{
-        font-family:'Sarabun',sans-serif;
+        /* font-family:'Sarabun',sans-serif; */
         font-size:14px;
         width:100%;
         }

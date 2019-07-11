@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ใบเสร็จรับเงิน</title>
     <script src="{{asset('/fontawesome/js/all.js')}}"></script>
-    <link href="https://fonts.googleapis.com/css?family=Sarabun&display=swap" rel="stylesheet">
+    <link href="{{asset('fontuse.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.min.css')}} " rel="stylesheet" >
     <style>
     body{

@@ -29,8 +29,11 @@ class RegisterController extends BibController {
         $regis_name = $request->input('regis_name');
         $regis_surname = $request->input('regis_surname');
         $regis_date = $request->input('regis_date');
-        $regis_sex = $request->input('regis_sex');
+   
         $regis_peopleid = $request->input('regis_peopleid');
+        if($regis_peopleid == NULL){
+            $regis_peopleid ="-";
+        }
         $regis_call = $request->input('regis_call');
         $regis_email = $request->input('regis_email');
         $regis_address = $request->input('regis_address');
@@ -50,8 +53,17 @@ class RegisterController extends BibController {
         $money_alphabet = $request->input('money_alphabet'); 
         $regis_cloth = $request->input('regis_cloth'); 
         $regis_medal_recieve = $request->input('regis_medal_recieve'); 
-
+        $regis_sex = $request->input('regis_sex');
         //Generate BIB (ID for Biking) or not, Generate only success payment
+        if($regis_prefix == "ด.ช." || $regis_prefix == "นาย" ){
+            $regis_sex="ชาย";
+        }
+        if($regis_prefix == "ด.ญ." || $regis_prefix == "นาง" || $regis_prefix == "น.ส." ){
+            $regis_sex="หญิง";
+        }
+        else{
+            $regis_sex="อื่นๆ";
+        }
         if($regis_status == "success"){
             $bibId = BibController::generateBib($regis_donation);
         }
