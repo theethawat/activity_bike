@@ -100,7 +100,8 @@
                         </div>
                     </div>
                     <br>
-                    <h4>สถานะของผู้สมัคร</h4><hr>
+                    <h4>สถานะของผู้สมัครประเภททั่วไป</h4><hr>
+                   
                     <ul class="list-group list-group-horizontal-xl acenter">
                         <li class="list-group-item active">ประเภท <h4>ทั่วไป</h4></li>
                         <li class="list-group-item">สมัคร <h4>{{$hundred_number}}</h4></li>

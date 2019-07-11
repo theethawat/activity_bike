@@ -62,6 +62,17 @@
         <li> สมัครเมื่อ - {{$data->created_at }}  </li>
         <li> ข้อมูลอัพเดทล่าสุดเมื่อ - {{$data->updated_at }}  </li>
         <li> อัพเดทข้อมูลล่าสุดโดย - {{$data->input_user }}  </li>
+        <?php
+        if($data->remark_1 != NULL){
+                echo "<hr>";
+                echo "ID การสมัครผ่านเว็บไซต์: " . $data->remark_1;
+        }
+                
+        if($data->remark_2 != NULL)
+                echo "<br> วิธีการชำระเงิน: " . $data->remark_2;
+        if($data->remark_3 != NULL)
+                echo "<br> อีเมลของผู้กรอกข้อมูล: " . $data->remark_3;
+        ?>
         </div>
     </div>
 </div>

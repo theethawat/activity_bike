@@ -12,7 +12,6 @@
    
      
 	<script src="{{asset('js/jquery-3.4.1.js')}} "></script>
-    <script src="{{asset('js/Chart.min.js')}} "></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
