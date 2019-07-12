@@ -4,8 +4,8 @@
 
 @auth
 <?php
- $userID = Auth::id();
- if($userID <= 8){
+ $user = Auth::user()->security;
+ if($user == "Admin"){
      $permission = true;
  }
 else{
@@ -35,12 +35,7 @@ else{
                         <td>{{$datalist->name}}</td>
                         <td>{{$datalist->email}}</td>
                         <td>{{$datalist->created_at}} </td>  
-                        <td><?php
-                         if($datalist->id <= 8)
-                            echo "Admin";
-                        else
-                            echo "Normal User";
-                        ?> </td> 
+                        <td>{{$datalist->security}}</td> 
                     </tr> 
                     <?php endforeach;?>
                 </tbody>

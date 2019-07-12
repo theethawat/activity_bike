@@ -3,8 +3,8 @@
 @section('content')
 @auth
 <?php
- $userID = Auth::id();
- if($userID <= 8){
+ $user = Auth::user()->security;
+ if($user == "Admin"){
      $permission = true;
  }
 else{

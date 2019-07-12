@@ -38,11 +38,12 @@
                        
                         <th scope="col">เงินบริจาค</th> 
                         <th scope="col">ได้รับเหรียญ</th>
-                        <th scope="col">แก้ไข หรือ ลบ</th>
+                        <th scope="col">แก้ไข</th>
                          <th scope="col">ทีม</th>
                        
                         <th scope="col">แก้ไขล่าสุดโดย</th>
                         <th scope="col">อัพเดทเมื่อ</th>
+                        <th scope="col">ลบ</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -149,7 +150,7 @@
                         <td scope="col">
                             <div class="d-flex flex-row justify-content-center kanit">
                                 <a href={{url('/home/edit/'.$datalist->id)}} ><button style="width:60px; margin-right:0.3em;" class="btn btn-warning"> <i class="fas fa-user-edit"></i> <br> แก้ไข </button> </a>
-                                <a onclick="return confirm('ยินยันการลบข้อมูล')" href={{url('/home/delete/'.$datalist->id)}}  ><button style="width:60px; margin-right:0.3em;" class="btn btn-danger"><i class="fas fa-trash-alt"></i> <br> ลบ </button> </a>
+                   
                                 
                                 <?php if($datalist->regis_status == "success"): ?>
                                     <a href={{url('/home/print/'.$datalist->id)}} target="_blank" ><button style="width:60px; margin-right:0.3em;" class="btn btn-primary"><i class="fas fa-print"></i> <br> พิมพ์</button> </a>
@@ -163,6 +164,17 @@
                        
                         <td scope="col">{{ $datalist -> input_user}}</td>
                         <td scope="col">{{ $datalist -> updated_at}}</td>
+                        <?php
+                        if(Auth::user()->security == "Admin"):
+                        ?>
+                        <td scope="col"> <a onclick="return confirm('ยินยันการลบข้อมูล')" href={{url('/home/delete/'.$datalist->id)}}  ><button style="width:60px; margin-right:0.3em;" class="btn btn-danger kanit"><i class="fas fa-trash-alt"></i> <br> ลบ </button> </a></td>
+                        <?php
+                        else:
+                        ?>
+                         <td scope="col">Only For Admin</td>
+                         <?php
+                         endif;
+                         ?>
                     </tr>
 
                 @endforeach

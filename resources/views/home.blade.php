@@ -43,6 +43,14 @@
                     </div>
                     <br>
                     <h5>เมนูอื่น ๆ</h5>
+                    <h5>Live Search</h5>
+                    <div class="list-group list-group-flush">
+                            <a href="{{url('/Search.php')}}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"> ระบบค้นหา Live Search
+                                <span class="badge badge-success badge-pill">New </span>
+                            </a>
+    
+                        </div>
+                        <br>
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('/home/search/')}}">ระบบค้นหา</a>
@@ -64,7 +72,26 @@
             </div>
             
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8">  
+            <?php
+            $user = Auth::user()->security;
+            if($user == "Admin"):?>
+                     <div class="card">
+                            <div class="card-header">Administrator </div>
+                            
+                            <div class="card-body">
+                                    คุณมีสถานะเป็นผู้ใช้งานระดับ Administrator คุณมีสิทธิในการใช้งานเพิ่มจากปกติดังนี้ รวมถึงสิทธิการลบข้อมูลผู้สมัคร จะสงวนไว้ให้ผู้ใช้ระดับ Administrator เท่านั้น
+                                    <br>
+                                    <ul class="list-group list-group-horizontal">
+                                            <a class="list-group-item" href='register'> เพิ่มผู้ใช้ </a>
+                                            <a class="list-group-item" href='home/manager'>จัดการผู้ใช้</a>
+                                            <a class="list-group-item" href='#'>ดู Log ข้อมูล (เร็วๆ นี้)</a>
+                                          </ul>
+        
+                            </div>
+                     </div>
+                     <br>
+            <?php endif; ?>
             <div class="card">
                 <div class="card-header">Dashboard</div>
                 
@@ -75,13 +102,7 @@
                         </div>
                     @endif
 
-                   <?php
-                    $id = Auth::id();
-                    if($id <= 8){
-                        echo "<div class='alert alert-light acenter' role='alert'>You have Administrator Permission you can add user to the site <a href='register'> Add User </a> and <a href='home/manager'> Manage User </a> </div>";
-                    }
-                   ?>
-                   
+                 
                     <div class="row justify-content-around">
                         <div class="col-sm-6" >
                                 <a href="{{url('/home/register')}}" style="text-decoration:none;">
