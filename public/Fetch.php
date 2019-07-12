@@ -2,7 +2,7 @@
 
 header('Content-Type: text/html; charset=utf-8');
 //fetch.php
-$conn = mysqli_connect("localhost", "operator", "opt2007", "activity_bike");
+$conn = mysqli_connect("localhost", "root", "", "activity_bike");
 
 
 //Set the php page to display Thai language
@@ -84,14 +84,3 @@ else
 {
  echo 'Data Not Found';
 }
-
-
-
-
-
-
-?>
-
-
-
-
